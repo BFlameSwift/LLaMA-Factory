@@ -24,6 +24,90 @@
       "tools": "tools"
     }
   },
+  "crohme_train": {
+    "file_name": "/home/liyu/workspaces/data-liyu/llmHMER/hmer_dataset/crohme_train_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_2014": {
+    "file_name": "/home/liyu/workspaces/data-liyu/llmHMER/hmer_dataset/crohme_2014_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_2016": {
+    "file_name": "/home/liyu/workspaces/data-liyu/llmHMER/hmer_dataset/crohme_2016_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_2019": {
+    "file_name": "/home/liyu/workspaces/data-liyu/llmHMER/hmer_dataset/crohme_2019_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+    "hme100k_train": {
+    "file_name": "/home/liyu/workspaces/data-liyu/llmHMER/hmer_dataset/hme100k_train_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+    "hme100k_test": {
+    "file_name": "/home/liyu/workspaces/data-liyu/llmHMER/hmer_dataset/hme100k_test_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
   "mllm_demo": {
     "file_name": "mllm_demo.json",
     "formatting": "sharegpt",

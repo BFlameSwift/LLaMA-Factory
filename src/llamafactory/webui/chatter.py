@@ -91,6 +91,7 @@ class WebChatModel(ChatModel):
             rope_scaling=get("top.rope_scaling") if get("top.rope_scaling") in ["linear", "dynamic"] else None,
             infer_backend=get("infer.infer_backend"),
             infer_dtype=get("infer.infer_dtype"),
+            trust_remote_code=True,
         )
 
         if checkpoint_path:
@@ -157,7 +158,7 @@ class WebChatModel(ChatModel):
                 result = response
 
             if isinstance(result, list):
-                tool_calls = [{"name": tool[0], "arguments": json.loads(tool[1])} for tool in result]
+                tool_calls = [{"name": tool.name, "arguments": json.loads(tool.arguments)} for tool in result]
                 tool_calls = json.dumps(tool_calls, indent=4, ensure_ascii=False)
                 output_messages = messages + [{"role": Role.FUNCTION.value, "content": tool_calls}]
                 bot_text = "```json\n" + tool_calls + "\n```"

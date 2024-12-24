@@ -147,11 +147,13 @@ class Runner:
             report_to="all" if get("train.report_to") else "none",
             use_galore=get("train.use_galore"),
             use_badam=get("train.use_badam"),
+            use_swanlab=get("train.use_swanlab"),
             output_dir=get_save_dir(model_name, finetuning_type, get("train.output_dir")),
             fp16=(get("train.compute_type") == "fp16"),
             bf16=(get("train.compute_type") == "bf16"),
             pure_bf16=(get("train.compute_type") == "pure_bf16"),
             plot_loss=True,
+            trust_remote_code=True,
             ddp_timeout=180000000,
             include_num_input_tokens_seen=False if is_transformers_version_equal_to_4_46() else True,  # FIXME
         )
@@ -227,6 +229,14 @@ class Runner:
             args["badam_switch_interval"] = get("train.badam_switch_interval")
             args["badam_update_ratio"] = get("train.badam_update_ratio")
 
+        # swanlab config
+        if get("train.use_swanlab"):
+            args["swanlab_project"] = get("train.swanlab_project")
+            args["swanlab_run_name"] = get("train.swanlab_run_name")
+            args["swanlab_workspace"] = get("train.swanlab_workspace")
+            args["swanlab_api_key"] = get("train.swanlab_api_key")
+            args["swanlab_mode"] = get("train.swanlab_mode")
+
         # eval config
         if get("train.val_size") > 1e-6 and args["stage"] != "ppo":
             args["val_size"] = get("train.val_size")
@@ -268,6 +278,7 @@ class Runner:
             top_p=get("eval.top_p"),
             temperature=get("eval.temperature"),
             output_dir=get_save_dir(model_name, finetuning_type, get("eval.output_dir")),
+            trust_remote_code=True,
         )
 
         if get("eval.predict"):
@@ -320,7 +331,7 @@ class Runner:
             if args.get("deepspeed", None) is not None:
                 env["FORCE_TORCHRUN"] = "1"
 
-            self.trainer = Popen(f"llamafactory-cli train {save_cmd(args)}", env=env, shell=True)
+            self.trainer = Popen(["llamafactory-cli", "train", save_cmd(args)], env=env)
             yield from self.monitor()
 
     def _form_config_dict(self, data: Dict["Component", Any]) -> Dict[str, Any]:

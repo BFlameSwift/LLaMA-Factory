@@ -25,8 +25,8 @@ from transformers import Trainer
 from typing_extensions import override
 
 from ...extras import logging
-from ...extras.packages import is_transformers_version_equal_to_4_46
-from ..callbacks import FixValueHeadModelCallback, PissaConvertCallback, SaveProcessorCallback
+from ...extras.packages import is_transformers_version_equal_to_4_46, is_transformers_version_greater_than
+from ..callbacks import FixValueHeadModelCallback, SaveProcessorCallback
 from ..trainer_utils import create_custom_optimizer, create_custom_scheduler
 
 
@@ -48,6 +48,9 @@ class PairwiseTrainer(Trainer):
     def __init__(
         self, finetuning_args: "FinetuningArguments", processor: Optional["ProcessorMixin"], **kwargs
     ) -> None:
+        if is_transformers_version_greater_than("4.46"):
+            kwargs["processing_class"] = kwargs.pop("tokenizer")
+
         super().__init__(**kwargs)
         self.finetuning_args = finetuning_args
         self.can_return_loss = True  # override property to return eval_loss
@@ -55,9 +58,6 @@ class PairwiseTrainer(Trainer):
 
         if processor is not None:
             self.add_callback(SaveProcessorCallback(processor))
-
-        if finetuning_args.pissa_convert:
-            self.add_callback(PissaConvertCallback)
 
         if finetuning_args.use_badam:
             from badam import BAdamCallback, clip_grad_norm_old_version  # type: ignore
@@ -77,6 +77,13 @@ class PairwiseTrainer(Trainer):
     ) -> "torch.optim.lr_scheduler.LRScheduler":
         create_custom_scheduler(self.args, num_training_steps, optimizer)
         return super().create_scheduler(num_training_steps, optimizer)
+
+    @override
+    def _get_train_sampler(self) -> Optional["torch.utils.data.Sampler"]:
+        if self.finetuning_args.disable_shuffling:
+            return torch.utils.data.SequentialSampler(self.train_dataset)
+
+        return super()._get_train_sampler()
 
     @override
     def compute_loss(

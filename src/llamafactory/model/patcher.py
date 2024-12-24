@@ -66,11 +66,11 @@ def patch_processor(
     setattr(processor, "tokenizer", tokenizer)
     setattr(processor, "image_seqlen", get_image_seqlen(config))
     setattr(processor, "image_resolution", model_args.image_resolution)
-    setattr(processor, "patch_size", get_patch_size(config))
+    setattr(processor, "patch_size", get_patch_size(config, processor))
     setattr(processor, "video_resolution", model_args.video_resolution)
     setattr(processor, "video_fps", model_args.video_fps)
     setattr(processor, "video_maxlen", model_args.video_maxlen)
-    setattr(processor, "vision_feature_select_strategy", get_vision_feature_select_strategy(config))
+    setattr(processor, "vision_feature_select_strategy", get_vision_feature_select_strategy(config, processor))
 
 
 def patch_config(
@@ -96,7 +96,7 @@ def patch_config(
     configure_quantization(config, tokenizer, model_args, init_kwargs)
     configure_moe(config, model_args, is_trainable)
     configure_visual_model(config)
-    configure_packing(config, model_args, is_trainable)
+    configure_packing(model_args, is_trainable)
 
     if model_args.use_cache and not is_trainable:
         setattr(config, "use_cache", True)

@@ -80,11 +80,12 @@ def vllm_infer(
     template_obj.mm_plugin.expand_mm_tokens = False  # for vllm generate
     dataset_module = get_dataset(template_obj, model_args, data_args, training_args, "ppo", **tokenizer_module)
 
-    inputs, prompts, labels = [], [], []
+    inputs, prompts, labels, images = [], [], [], []
     for sample in dataset_module["train_dataset"]:
         if sample["images"]:
             multi_modal_data = {"image": []}
             for image in sample["images"]:
+                images.append(image)
                 if not isinstance(image, (str, ImageObject)):
                     raise ValueError(f"Expected image input is a path or PIL.Image, but got {type(image)}.")
 
@@ -133,7 +134,7 @@ def vllm_infer(
     preds = [result.outputs[0].text for result in results]
     with open(save_name, "w", encoding="utf-8") as f:
         for text, pred, label in zip(prompts, preds, labels):
-            f.write(json.dumps({"prompt": text, "predict": pred, "label": label}, ensure_ascii=False) + "\n")
+            f.write(json.dumps({"prompt": text, "predict": pred, "label": label, "images": images}, ensure_ascii=False) + "\n")
 
     print("*" * 70)
     print(f"{len(prompts)} generated results have been saved at {save_name}.")

@@ -108,6 +108,7 @@ class Evaluator:
                 support_set = (
                     dataset["train"].shuffle().select(range(min(self.eval_args.n_shot, len(dataset["train"]))))
                 )
+                print("shuffle")
                 messages = self.eval_template.format_example(
                     target_data=dataset[eval_split][i],
                     support_set=support_set,

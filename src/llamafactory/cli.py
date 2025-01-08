@@ -24,7 +24,7 @@ from .chat.chat_model import run_chat
 from .eval.evaluator import run_eval
 from .extras import logging
 from .extras.env import VERSION, print_env
-from .extras.misc import get_device_count
+from .extras.misc import get_device_count, use_ray
 from .train.tuner import export_model, run_exp
 from .webui.interface import run_web_demo, run_web_ui
 
@@ -87,7 +87,7 @@ def main():
         export_model()
     elif command == Command.TRAIN:
         force_torchrun = os.getenv("FORCE_TORCHRUN", "0").lower() in ["true", "1"]
-        if force_torchrun or get_device_count() > 1:
+        if force_torchrun or (get_device_count() > 1 and not use_ray()):
             master_addr = os.getenv("MASTER_ADDR", "127.0.0.1")
             master_port = os.getenv("MASTER_PORT", str(random.randint(20001, 29999)))
             logger.info_rank0(f"Initializing distributed tasks at: {master_addr}:{master_port}")
@@ -95,7 +95,8 @@ def main():
                 (
                     "torchrun --nnodes {nnodes} --node_rank {node_rank} --nproc_per_node {nproc_per_node} "
                     "--master_addr {master_addr} --master_port {master_port} {file_name} {args}"
-                ).format(
+                )
+                .format(
                     nnodes=os.getenv("NNODES", "1"),
                     node_rank=os.getenv("NODE_RANK", "0"),
                     nproc_per_node=os.getenv("NPROC_PER_NODE", str(get_device_count())),
@@ -103,8 +104,8 @@ def main():
                     master_port=master_port,
                     file_name=launcher.__file__,
                     args=" ".join(sys.argv[1:]),
-                ),
-                shell=True,
+                )
+                .split()
             )
             sys.exit(process.returncode)
         else:
@@ -119,3 +120,7 @@ def main():
         print(USAGE)
     else:
         raise NotImplementedError(f"Unknown command: {command}.")
+
+
+if __name__ == "__main__":
+    main()

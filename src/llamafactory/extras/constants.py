@@ -448,6 +448,7 @@ register_model_group(
         },
         "DeepSeek-Coder-7B-Base": {
             DownloadSource.DEFAULT: "deepseek-ai/deepseek-coder-7b-base-v1.5",
+            DownloadSource.MODELSCOPE: "deepseek-ai/deepseek-coder-7b-base-v1.5",
         },
         "DeepSeek-Coder-33B-Base": {
             DownloadSource.DEFAULT: "deepseek-ai/deepseek-coder-33b-base",
@@ -459,6 +460,7 @@ register_model_group(
         },
         "DeepSeek-Coder-7B-Instruct": {
             DownloadSource.DEFAULT: "deepseek-ai/deepseek-coder-7b-instruct-v1.5",
+            DownloadSource.MODELSCOPE: "deepseek-ai/deepseek-coder-7b-instruct-v1.5",
         },
         "DeepSeek-Coder-33B-Instruct": {
             DownloadSource.DEFAULT: "deepseek-ai/deepseek-coder-33b-instruct",
@@ -466,6 +468,33 @@ register_model_group(
         },
     },
     template="deepseekcoder",
+)
+
+
+register_model_group(
+    models={
+        "DeepSeek-V2-236B-Chat-0628": {
+            DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-V2-Chat-0628",
+            DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-V2-Chat-0628",
+        },
+        "DeepSeek-V2.5-236B-Chat": {
+            DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-V2.5",
+            DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-V2.5",
+        },
+        "DeepSeek-V2.5-236B-Chat-1210": {
+            DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-V2.5-1210",
+            DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-V2.5-1210",
+        },
+        "DeepSeek-V3-685B-Base": {
+            DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-V3-Base",
+            DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-V3-Base",
+        },
+        "DeepSeek-V3-685B-Chat": {
+            DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-V3",
+            DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-V3",
+        },
+    },
+    template="deepseek3",
 )
 
 
@@ -586,6 +615,28 @@ register_model_group(
         },
     },
     template="glm4",
+)
+
+
+register_model_group(
+    models={
+        "GPT-2-Small": {
+            DownloadSource.DEFAULT: "openai-community/gpt2",
+            DownloadSource.MODELSCOPE: "AI-ModelScope/gpt2",
+        },
+        "GPT-2-Medium": {
+            DownloadSource.DEFAULT: "openai-community/gpt2-medium",
+            DownloadSource.MODELSCOPE: "AI-ModelScope/gpt2-medium",
+        },
+        "GPT-2-Large": {
+            DownloadSource.DEFAULT: "openai-community/gpt2-large",
+            DownloadSource.MODELSCOPE: "AI-ModelScope/gpt2-large",
+        },
+        "GPT-2-XL": {
+            DownloadSource.DEFAULT: "openai-community/gpt2-xl",
+            DownloadSource.MODELSCOPE: "goodbai95/GPT2-xl",
+        },
+    },
 )
 
 
@@ -766,6 +817,15 @@ register_model_group(
     template="intern2",
 )
 
+register_model_group(
+    models={
+        "InternLM3-8B-Chat": {
+            DownloadSource.DEFAULT: "internlm/internlm3-8b-instruct",
+            DownloadSource.MODELSCOPE: "Shanghai_AI_Laboratory/internlm3-8b-instruct",
+        },
+    },
+    template="intern3",
+)
 
 register_model_group(
     models={
@@ -1114,6 +1174,28 @@ register_model_group(
 
 register_model_group(
     models={
+        "MiniCPM-o-2_6-Chat": {
+            DownloadSource.DEFAULT: "openbmb/MiniCPM-o-2_6",
+            DownloadSource.MODELSCOPE: "OpenBMB/MiniCPM-o-2_6",
+        },
+    },
+    template="minicpm_v",
+)
+
+
+register_model_group(
+    models={
+        "MiniCPM-V-2_6-Chat": {
+            DownloadSource.DEFAULT: "openbmb/MiniCPM-V-2_6",
+            DownloadSource.MODELSCOPE: "OpenBMB/MiniCPM-V-2_6",
+        },
+    },
+    template="minicpm_v",
+)
+
+
+register_model_group(
+    models={
         "Mistral-7B-v0.1": {
             DownloadSource.DEFAULT: "mistralai/Mistral-7B-v0.1",
             DownloadSource.MODELSCOPE: "AI-ModelScope/Mistral-7B-v0.1",
@@ -1362,6 +1444,14 @@ register_model_group(
             DownloadSource.DEFAULT: "microsoft/Phi-3-medium-128k-instruct",
             DownloadSource.MODELSCOPE: "LLM-Research/Phi-3-medium-128k-instruct",
         },
+        "Phi-3.5-4B-instruct": {
+            DownloadSource.DEFAULT: "microsoft/Phi-3.5-mini-instruct",
+            DownloadSource.MODELSCOPE: "LLM-Research/Phi-3.5-mini-instruct",
+        },
+        "Phi-3.5-MoE-42B-A6.6B-instruct": {
+            DownloadSource.DEFAULT: "microsoft/Phi-3.5-MoE-instruct",
+            DownloadSource.MODELSCOPE: "LLM-Research/Phi-3.5-MoE-instruct",
+        },
     },
     template="phi",
 )
@@ -1379,6 +1469,17 @@ register_model_group(
         },
     },
     template="phi_small",
+)
+
+
+register_model_group(
+    models={
+        "Phi-4-14B-Instruct": {
+            DownloadSource.DEFAULT: "microsoft/phi-4",
+            DownloadSource.MODELSCOPE: "LLM-Research/phi-4",
+        },
+    },
+    template="phi4",
 )
 
 

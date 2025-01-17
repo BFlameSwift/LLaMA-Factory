@@ -28,9 +28,9 @@ from trl.trainer import disable_dropout_in_model
 from typing_extensions import override
 
 from ...extras.constants import IGNORE_INDEX
-from ...extras.packages import is_transformers_version_equal_to_4_46
+from ...extras.packages import is_transformers_version_equal_to_4_46, is_transformers_version_greater_than
 from ..callbacks import SaveProcessorCallback
-from ..trainer_utils import create_custom_optimizer, create_custom_scheduler, get_batch_logps
+from ..trainer_utils import create_custom_optimizer, create_custom_scheduler, get_batch_logps, nested_detach
 
 
 if TYPE_CHECKING:
@@ -50,6 +50,9 @@ class CustomKTOTrainer(KTOTrainer):
         disable_dropout: bool = True,
         **kwargs,
     ):
+        if is_transformers_version_greater_than("4.46"):
+            kwargs["processing_class"] = kwargs.pop("tokenizer")
+
         if disable_dropout:
             disable_dropout_in_model(model)
             if ref_model is not None:
@@ -139,7 +142,7 @@ class CustomKTOTrainer(KTOTrainer):
         r"""
         Runs forward pass and computes the log probabilities.
         """
-        batch = {k: v.detach().clone() for k, v in batch.items()}  # avoid error
+        batch = nested_detach(batch, clone=True)  # avoid error
         model_inputs = {
             "input_ids": batch[f"{prefix}input_ids"],
             "attention_mask": batch[f"{prefix}attention_mask"],

@@ -59,19 +59,19 @@ class ProcessorArguments:
     """
 
     image_resolution: int = field(
-        default=512 * 512,
-        metadata={"help": "Keeps the number of pixels of image below this resolution."},
+        default=768 * 768,
+        metadata={"help": "The maximum number of pixels of image inputs."},
     )
     video_resolution: int = field(
-        default=128 * 128,
-        metadata={"help": "Keeps the number of pixels of video below this resolution."},
+        default=256 * 256,
+        metadata={"help": "The maximum number of pixels of video inputs."},
     )
     video_fps: float = field(
         default=2.0,
         metadata={"help": "The frames to sample per second for video inputs."},
     )
     video_maxlen: int = field(
-        default=64,
+        default=128,
         metadata={"help": "The maximum number of sampled frames for video inputs."},
     )
 
@@ -201,7 +201,7 @@ class ModelArguments(QuantizationArguments, ProcessorArguments, ExportArguments,
         default=True,
         metadata={"help": "Whether or not to use memory-efficient model loading."},
     )
-    rope_scaling: Optional[Literal["linear", "dynamic"]] = field(
+    rope_scaling: Optional[Literal["linear", "dynamic", "yarn", "llama3"]] = field(
         default=None,
         metadata={"help": "Which scaling strategy should be adopted for the RoPE embeddings."},
     )

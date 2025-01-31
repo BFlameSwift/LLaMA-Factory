@@ -457,7 +457,21 @@
             "assistant_tag": "gpt"
         }
     },
-    "crohme2023_train": {
+    "crohme2023_train_again_train": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/crohme2023_white_again_train/crohme2023_train.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+   "crohme2023_train": {
         "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/crohme2023_white/crohme2023_train.json",
         "formatting": "sharegpt",
         "columns": {
@@ -540,6 +554,20 @@
           "user_tag": "human",
           "assistant_tag": "gpt"
       }
+  },
+  "unimer_net_train_100k": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/unimernet/unimer_net_train_100k.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   },
   "unimer_net_cpe": {
       "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/unimernet/unimer_net_cpe.json",

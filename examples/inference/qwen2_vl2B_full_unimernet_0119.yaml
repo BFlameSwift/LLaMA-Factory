@@ -15,7 +15,7 @@ finetuning_type: full
 # deepspeed: examples/deepspeed/ds_z3_config.yaml # deepspeed配置文件
 
 ### dataset
-eval_dataset: hme100k_test_nobox,crohme_2014_nobox_white,crohme_2016_nobox_white,crohme_2019_nobox_white
+eval_dataset: unimer_net_hwe,unimer_net_sce,unimer_net_spe,unimer_net_cpe,crohme2023_CROHME2014_test,crohme2023_CROHME2016_test,crohme2023_CROHME2019_test,crohme2023_CROHME2023_test,crohme_2014_nobox_white,crohme_2016_nobox_white,crohme_2019_nobox_white
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 120000
@@ -27,7 +27,7 @@ output_dir: saves/qwen2_vl-2b/full/predict/example
 overwrite_output_dir: true
 
 ### eval
-per_device_eval_batch_size: 16
+per_device_eval_batch_size: 32
 predict_with_generate: true
 ddp_timeout: 180000000
 mask_history: False

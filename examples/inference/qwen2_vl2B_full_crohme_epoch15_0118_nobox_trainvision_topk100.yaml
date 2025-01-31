@@ -15,22 +15,23 @@ finetuning_type: full
 # deepspeed: examples/deepspeed/ds_z3_config.yaml # deepspeed配置文件
 
 ### dataset
-eval_dataset: hme100k_test_nobox,crohme_2014_nobox_white,crohme_2016_nobox_white,crohme_2019_nobox_white
+eval_dataset: crohme_2014_nobox_white,crohme_2016_nobox_white,crohme_2019_nobox_white
 template: qwen2_vl
 cutoff_len: 2048
-max_samples: 120000
+max_samples: 100000
 overwrite_cache: true
 preprocessing_num_workers: 32
 
+
 ### output
-output_dir: saves/qwen2_vl-2b/full/predict/example
+output_dir: saves/qwen2_vl-2b/full/predict/0105_epoch15_alltrain_nobox_trainvision_topk10
 overwrite_output_dir: true
+top_k: 10
 
 ### eval
-per_device_eval_batch_size: 16
+per_device_eval_batch_size: 32
 predict_with_generate: true
 ddp_timeout: 180000000
 mask_history: False
 infer_backend: huggingface
-#infer_backend: vllm
 vllm_max_lora_rank: 256

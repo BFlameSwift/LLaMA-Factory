@@ -625,6 +625,264 @@
           "assistant_tag": "gpt"
       }
   },
+  
+    "1shot-tree_nobox_white_crohme_train": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-tree/nobox_white/crohme_train.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-tree_nobox_white_crohme_2019": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-tree/nobox_white/crohme_2019.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-tree_nobox_white_crohme_2014": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-tree/nobox_white/crohme_2014.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-tree_nobox_white_crohme_2016": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-tree/nobox_white/crohme_2016.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    
+    "1shot-ast_nobox_white_crohme_train": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-ast/nobox_white/crohme_train.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-ast_nobox_white_crohme_2019": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-ast/nobox_white/crohme_2019.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-ast_nobox_white_crohme_2014": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-ast/nobox_white/crohme_2014.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-ast_nobox_white_crohme_2016": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-ast/nobox_white/crohme_2016.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_crohme_train": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/nobox_white/crohme_train.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_crohme_2019": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/nobox_white/crohme_2019.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_crohme_2014": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/nobox_white/crohme_2014.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_hme100k_train": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/nobox_white/hme100k_train.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_hme100k_test": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/nobox_white/hme100k_test.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_crohme_2016": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/nobox_white/crohme_2016.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+
+    
+    "1shot-bt-ast_no|_crohme_train": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/no|/crohme_train.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_no|_crohme_2019": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/no|/crohme_2019.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_no|_crohme_2014": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/no|/crohme_2014.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+    "1shot-bt-ast_no|_crohme_2016": {
+        "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/1shot-better-ast/no|/crohme_2016.json",
+        "formatting": "sharegpt",
+        "columns": {
+            "messages": "messages",
+            "images": "images"
+        },
+        "tag": {
+            "role_tag": "from",
+            "content_tag": "value",
+            "user_tag": "human",
+            "assistant_tag": "gpt"
+        }
+    },
+
+
   "mllm_demo": {
     "file_name": "mllm_demo.json",
     "formatting": "sharegpt",

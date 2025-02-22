@@ -3,7 +3,7 @@
 ### model
 model_name_or_path: Qwen/Qwen2-VL-2B-Instruct
 
-adapter_name_or_path: saves/qwen2_vl-2b/lora/sft/rank256-epoch15-0102_nobox_white/checkpoint-31
+# adapter_name_or_path: saves/qwen2_vl-2b/lora/sft/rank256-epoch15-0102_nobox/checkpoint-31
 # finetuning_type: lora
 
 ### method
@@ -15,15 +15,15 @@ finetuning_type: full
 # deepspeed: examples/deepspeed/ds_z3_config.yaml # deepspeed配置文件
 
 ### dataset
-eval_dataset: 1shot-bt-ast_no11_crohme_2014,1shot-bt-ast_no11_crohme_2016,1shot-bt-ast_no11_crohme_2019
+eval_dataset: crohme2023_CROHME2014_test,crohme2023_CROHME2016_test,crohme2023_CROHME2019_test,crohme2023_CROHME2023_test,crohme_2014_nobox_white,crohme_2016_nobox_white,crohme_2019_nobox_white,hme100k_test_nobox_white,hme100k_train_nobox_white,crohme_train_nobox_white
 template: qwen2_vl
 cutoff_len: 2048
-max_samples: 100000
+max_samples: 200000
 overwrite_cache: true
 preprocessing_num_workers: 32
 
 ### output
-output_dir: saves/qwen2_vl-2b/full/predict/0209_epoch15_full_1shotbt-ast_no|_nobox_white_trainvision
+output_dir: saves/qwen2_vl-2b/full/sft/predict/zeroshot
 overwrite_output_dir: true
 
 ### eval
@@ -32,4 +32,5 @@ predict_with_generate: true
 ddp_timeout: 180000000
 mask_history: False
 infer_backend: huggingface
+#infer_backend: vllm
 vllm_max_lora_rank: 256

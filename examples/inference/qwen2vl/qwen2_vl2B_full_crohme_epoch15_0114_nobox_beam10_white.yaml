@@ -1,21 +1,24 @@
+
 # from https://llamafactory.readthedocs.io/zh-cn/latest/getting_started/inference.html
 
 ### model
 model_name_or_path: Qwen/Qwen2-VL-2B-Instruct
 
-adapter_name_or_path: saves/qwen2_vl-2b/lora/sft/rank256-epoch15-0102_nobox_white/checkpoint-31
+adapter_name_or_path: saves/qwen2_vl-7b/lora/sft/rank256-epoch15-0101_nobox/checkpoint-31
 # finetuning_type: lora
 
 ### method
 stage: sft
 do_predict: true
 finetuning_type: full
-
+# num_beams: 10
+# eval_num_beams: 10
+max_length: 512
 
 # deepspeed: examples/deepspeed/ds_z3_config.yaml # deepspeed配置文件
 
 ### dataset
-eval_dataset: 1shot-bt-ast_no11_crohme_2014,1shot-bt-ast_no11_crohme_2016,1shot-bt-ast_no11_crohme_2019
+eval_dataset: crohme_2014_nobox_white,crohme_2016_nobox_white,crohme_2019_nobox_white
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 100000
@@ -23,11 +26,11 @@ overwrite_cache: true
 preprocessing_num_workers: 32
 
 ### output
-output_dir: saves/qwen2_vl-2b/full/predict/0209_epoch15_full_1shotbt-ast_no|_nobox_white_trainvision
+output_dir: saves/qwen2_vl-2b/full/predict/0114_epoch15_alltrain_nobox_beam20_white/test
 overwrite_output_dir: true
 
 ### eval
-per_device_eval_batch_size: 32
+per_device_eval_batch_size: 8
 predict_with_generate: true
 ddp_timeout: 180000000
 mask_history: False

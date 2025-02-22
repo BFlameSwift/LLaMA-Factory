@@ -1,9 +1,9 @@
 # from https://llamafactory.readthedocs.io/zh-cn/latest/getting_started/inference.html
 
 ### model
-model_name_or_path: Qwen/Qwen2-VL-2B-Instruct
+model_name_or_path: Qwen/Qwen2.5/home/liyu/workspaces/llama-factory/examples/train_full/qwen2.5vl3b_full_sft_crohme-0210_1shot_tdv2_ast.yaml-VL-3B-Instruct
 
-adapter_name_or_path: saves/qwen2_vl-2b/lora/sft/rank256-epoch15-0102_nobox_white/checkpoint-31
+adapter_name_or_path: saves/qwen2_vl-3b/lora/sft/rank256-epoch15-0210_1shottdv2-ast_nobox_white/checkpoint-31
 # finetuning_type: lora
 
 ### method
@@ -15,7 +15,7 @@ finetuning_type: full
 # deepspeed: examples/deepspeed/ds_z3_config.yaml # deepspeed配置文件
 
 ### dataset
-eval_dataset: 1shot-bt-ast_no11_crohme_2014,1shot-bt-ast_no11_crohme_2016,1shot-bt-ast_no11_crohme_2019
+eval_dataset: tdtree_crohme_2014,tdtree_crohme_2016,tdtree_crohme_2019
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 100000
@@ -23,7 +23,7 @@ overwrite_cache: true
 preprocessing_num_workers: 32
 
 ### output
-output_dir: saves/qwen2_vl-2b/full/predict/0209_epoch15_full_1shotbt-ast_no|_nobox_white_trainvision
+output_dir: saves/qwen2_vl-2b/full/predict/0210_epoch15_full_1shottdv2-ast_nobox_white_trainvision
 overwrite_output_dir: true
 
 ### eval

@@ -98,13 +98,15 @@ def vllm_infer(
         )
 
     sampling_params = SamplingParams(
+        n=2,
         repetition_penalty=generating_args.repetition_penalty or 1.0,  # repetition_penalty must > 0
         temperature=generating_args.temperature,
-        top_p=generating_args.top_p or 1.0,  # top_p must > 0
-        top_k=generating_args.top_k,
+        # top_p=generating_args.top_p or 1.0,  # top_p must > 0
+        # top_k=generating_args.top_k,
         stop_token_ids=template_obj.get_stop_token_ids(tokenizer),
         max_tokens=generating_args.max_new_tokens,
         skip_special_tokens=False,
+        logprobs=10
     )
     if model_args.adapter_name_or_path is not None:
         lora_request = LoRARequest("default", 1, model_args.adapter_name_or_path[0])
@@ -126,7 +128,9 @@ def vllm_infer(
     if isinstance(model_args.vllm_config, dict):
         engine_args.update(model_args.vllm_config)
 
-    results = LLM(**engine_args).generate(inputs, sampling_params, lora_request=lora_request)
+    results = LLM(**engine_args).generate(inputs[:20], sampling_params)
+    # , lora_request=lora_request
+    breakpoint()
     preds = [result.outputs[0].text for result in results]
     with open(save_name, "w", encoding="utf-8") as f:
         for text, pred, label in zip(prompts, preds, labels):

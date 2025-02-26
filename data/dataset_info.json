@@ -1173,17 +1173,17 @@
     }
   },
   "open_thoughts": {
-    "hf_hub_url": "open-thoughts/OpenThoughts-114k",
+    "hf_hub_url": "llamafactory/OpenThoughts-114k",
     "formatting": "sharegpt",
     "columns": {
-      "messages": "conversations",
-      "system": "system"
+      "messages": "messages"
     },
     "tags": {
-      "role_tag": "from",
-      "content_tag": "value",
+      "role_tag": "role",
+      "content_tag": "content",
       "user_tag": "user",
-      "assistant_tag": "assistant"
+      "assistant_tag": "assistant",
+      "system_tag": "system"
     }
   },
   "llava_1k_en": {
@@ -1194,11 +1194,11 @@
       "messages": "messages",
       "images": "images"
     },
-    "tags": {
-      "role_tag": "role",
-      "content_tag": "content",
-      "user_tag": "user",
-      "assistant_tag": "assistant"
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
     }
   },
   "llava_1k_zh": {
@@ -1725,20 +1725,6 @@
       "assistant_tag": "gpt"
     }
   },
-  "open_thoughts": {
-    "hf_hub_url": "llamafactory/OpenThoughts-114k",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages"
-    },
-    "tags": {
-      "role_tag": "role",
-      "content_tag": "content",
-      "user_tag": "user",
-      "assistant_tag": "assistant",
-      "system_tag": "system"
-    }
-  },
   "open_r1_math": {
     "hf_hub_url": "llamafactory/OpenR1-Math-94k",
     "formatting": "sharegpt",
@@ -1756,21 +1742,6 @@
   "chinese_r1_distill": {
     "hf_hub_url": "Congliu/Chinese-DeepSeek-R1-Distill-data-110k-SFT",
     "ms_hub_url": "liucong/Chinese-DeepSeek-R1-Distill-data-110k-SFT"
-  },
-  "llava_1k_en": {
-    "hf_hub_url": "BUAADreamer/llava-en-zh-2k",
-    "subset": "en",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
   },
   "fewshot_tdv2_crohme_2019": {
     "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0210_fewshot_ast/fewshot_tdv2_crohme_2019.json",
@@ -2152,6 +2123,76 @@
   },
   "3b_fix_error_train_prompt_noanswer": {
     "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0222_fix_error_noanswer/3b_fix_error_train_prompt_noanswer.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "tdtree_crohme_2014": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/tdv2_tree/crohme/tdtree_crohme_2014.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "fewshot_tdv2_crohme_2016": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0210_fewshot_ast/fewshot_tdv2_crohme_2016.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "im2latex100k_validate": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/im2latex100k/im2latex100k_validate.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "im2latex100k_test": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/im2latex100k/im2latex100k_test.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "im2latex100k_train": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/im2latex100k/im2latex100k_train.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",

@@ -101,15 +101,15 @@ def vllm_infer(
         )
 
     sampling_params = SamplingParams(
-        n=2,
+        n=32,
         repetition_penalty=generating_args.repetition_penalty or 1.0,  # repetition_penalty must > 0
         temperature=generating_args.temperature,
-        # top_p=generating_args.top_p or 1.0,  # top_p must > 0
-        # top_k=generating_args.top_k,
+        top_p=generating_args.top_p or 1.0,  # top_p must > 0
+        top_k=generating_args.top_k,
         stop_token_ids=template_obj.get_stop_token_ids(tokenizer),
         max_tokens=generating_args.max_new_tokens,
         skip_special_tokens=False,
-        logprobs=10
+        # logprobs=10
     )
     if model_args.adapter_name_or_path is not None:
         lora_request = LoRARequest("default", 1, model_args.adapter_name_or_path[0])
@@ -124,6 +124,7 @@ def vllm_infer(
         "pipeline_parallel_size": pipeline_parallel_size,
         "disable_log_stats": True,
         "enable_lora": model_args.adapter_name_or_path is not None,
+        
     }
     if template_obj.mm_plugin.__class__.__name__ != "BasePlugin":
         engine_args["limit_mm_per_prompt"] = {"image": 4, "video": 2}
@@ -131,16 +132,21 @@ def vllm_infer(
     if isinstance(model_args.vllm_config, dict):
         engine_args.update(model_args.vllm_config)
 
-    results = LLM(**engine_args).generate(inputs[:20], sampling_params)
-    # , lora_request=lora_request
-    breakpoint()
-    preds = [result.outputs[0].text for result in results]
+    results = LLM(**engine_args).generate(inputs, sampling_params)
+    
     with open(save_name, "w", encoding="utf-8") as f:
-        for text, pred, label in zip(prompts, preds, labels):
-            f.write(json.dumps({"prompt": text, "predict": pred, "label": label, "images": images}, ensure_ascii=False) + "\n")
+        for text, result, label in zip(prompts, results, labels):
+            # 获取该输入的所有生成结果
+            predictions = [output.text for output in result.outputs]
+            f.write(json.dumps({
+                "prompt": text,
+                "preds": predictions,  # 保存为列表，包含所有生成结果
+                "label": label,
+                "images": images
+            }, ensure_ascii=False) + "\n")
 
     print("*" * 70)
-    print(f"{len(prompts)} generated results have been saved at {save_name}.")
+    print(f"{len(prompts)} samples with {sampling_params.n} predictions each have been saved at {save_name}.")
     print("*" * 70)
 
 

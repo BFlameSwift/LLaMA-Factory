@@ -6,13 +6,8 @@ stage: sft
 do_train: true
 finetuning_type: full
 freeze_vision_tower: false # choices: [true, false]
-<<<<<<< HEAD
 # train_mm_proj_only: false # choices: [true, false]
-deepspeed: examples/deepspeed/ds_z2_config.json
-=======
-train_mm_proj_only: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z3_config.json
->>>>>>> 2ebb7f7bcbc4c2c39a22db6c295c1724d270c04f
 
 ### dataset
 dataset: crohme_train,0313_single_error_find,0313_single_error_fix

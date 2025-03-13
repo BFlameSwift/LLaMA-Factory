@@ -6,11 +6,16 @@ stage: sft
 do_train: true
 finetuning_type: full
 freeze_vision_tower: false # choices: [true, false]
+<<<<<<< HEAD
 # train_mm_proj_only: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
+=======
+train_mm_proj_only: false # choices: [true, false]
+deepspeed: examples/deepspeed/ds_z3_config.json
+>>>>>>> 2ebb7f7bcbc4c2c39a22db6c295c1724d270c04f
 
 ### dataset
-dataset: crohme_train_nobox_white,0313_error_find,0313_error_fix
+dataset: crohme_train,0313_error_find,0313_error_fix
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 200000
@@ -26,8 +31,8 @@ plot_loss: true
 overwrite_output_dir: true
 
 ### train
-per_device_train_batch_size: 8
-gradient_accumulation_steps: 4
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 8
 learning_rate: 1.0e-5
 num_train_epochs: 1.0
 lr_scheduler_type: cosine
@@ -36,9 +41,9 @@ bf16: true
 ddp_timeout: 180000000
 
 ### eval
-eval_dataset: crohme_2014_nobox_white,crohme_2016_nobox_white,crohme_2019_nobox_white
+eval_dataset: crohme_2014,crohme_2016,crohme_2019
 #  ,crohme_2016,crohme_2019
 val_size: 0
-per_device_eval_batch_size: 8
+per_device_eval_batch_size: 4
 eval_strategy: steps
 eval_steps: 90

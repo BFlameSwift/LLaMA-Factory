@@ -6,11 +6,11 @@ stage: sft
 do_train: true
 finetuning_type: full
 freeze_vision_tower: false # choices: [true, false]
-train_mm_proj_only: false # choices: [true, false]
+# train_mm_proj_only: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: crohme_train_nobox_white,0313_single_error_find
+dataset: crohme_train,0313_single_error_find
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 200000

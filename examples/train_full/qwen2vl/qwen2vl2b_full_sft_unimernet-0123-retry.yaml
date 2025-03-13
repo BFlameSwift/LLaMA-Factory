@@ -1,0 +1,45 @@
+### model
+model_name_or_path: Qwen/Qwen2-VL-2B-Instruct
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+freeze_vision_tower: false # choices: [true, false]
+train_mm_proj_only: false # choices: [true, false]
+deepspeed: examples/deepspeed/ds_z2_config.json
+# deepspeed: examples/deepspeed/ds_z3_config.json
+resume_from_checkpoint: /home/liyu/workspaces/data-liyu/llmHMER/LLaMA-Factory/saves/qwen2_vl-2b/full/sft/standred/0119_full_unimernet_newstandred/checkpoint-38520
+
+### dataset
+dataset: unimer_net_train
+template: qwen2_vl
+cutoff_len: 2048
+max_samples: 2000000
+overwrite_cache: true
+preprocessing_num_workers: 32
+
+### output
+output_dir: saves/qwen2_vl-2b/full/sft/standred/0119_full_unimernet_newstandred
+logging_steps: 4
+save_steps: 7704 # 4个epoch, per 0.5 epoch save and eval
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 4
+learning_rate: 1.0e-5
+num_train_epochs: 4.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+eval_dataset: unimer_net_hwe,unimer_net_sce,unimer_net_spe
+#  ,crohme_2016,crohme_2019
+val_size: 0
+per_device_eval_batch_size: 16
+eval_strategy: steps
+eval_steps: 1926 # 0.1 epoch

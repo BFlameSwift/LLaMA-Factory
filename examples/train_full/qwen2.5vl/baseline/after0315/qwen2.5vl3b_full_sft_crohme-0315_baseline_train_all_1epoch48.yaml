@@ -25,7 +25,7 @@ preprocessing_num_workers: 32
 dataloader_num_workers: 16
 
 ### output
-output_dir: saves/qwen2.5_vl-3b/full/sft/standred/sft-error/0315_full_crohme_baseline_train_all_2epoch
+output_dir: saves/qwen2.5_vl-3b/full/sft/standred/sft-error/0315_full_crohme_baseline_train_all_1epoch48
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 5
 save_steps: 9999 # 15个epoch
@@ -33,10 +33,10 @@ plot_loss: true
 overwrite_output_dir: true
 
 ### train
-per_device_train_batch_size: 8
-gradient_accumulation_steps: 4
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 8
 learning_rate: 1.0e-5
-num_train_epochs: 2.0
+num_train_epochs: 1.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
 bf16: true
@@ -48,6 +48,6 @@ resume_from_checkpoint: null
 eval_dataset: crohme_2014,crohme_2016,crohme_2019
 #  ,crohme_2016,crohme_2019
 val_size: 0
-per_device_eval_batch_size: 8
+per_device_eval_batch_size: 4
 eval_strategy: steps
 eval_steps: 90

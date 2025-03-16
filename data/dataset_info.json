@@ -2191,5 +2191,47 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "crohme_2023_test_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/crohme_2023_final/crohme_2023_test_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2023_train_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/crohme_2023_final/crohme2023_train_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_2023_val_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/crohme_2023_final/crohme_2023_val_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

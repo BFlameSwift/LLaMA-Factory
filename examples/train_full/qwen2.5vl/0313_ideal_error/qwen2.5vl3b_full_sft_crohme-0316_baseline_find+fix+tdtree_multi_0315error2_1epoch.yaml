@@ -9,14 +9,14 @@ trust_remote_code: true
 stage: sft
 do_train: true
 finetuning_type: full
-freeze_vision_tower: true # choices: [true, false]
+freeze_vision_tower: false # choices: [true, false]
 freeze_multi_modal_projector: false  # choices: [true, false]
-freeze_language_model: true  # choices: [true, false]
+freeze_language_model: false  # choices: [true, false]
 # train_mm_proj_only: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z3_config.json
 
 ### dataset
-dataset: crohme_train,0313_error_find,0315_multi_prompt2,0311_tdtree_crohme_train
+dataset: crohme_train,0313_error_find,0315_multi_error_prompt2,0311_tdtree_crohme_train
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 200000

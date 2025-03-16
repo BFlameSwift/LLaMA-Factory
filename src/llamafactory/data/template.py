@@ -877,6 +877,16 @@ register_template(
 
 
 register_template(
+    name="hunyuan",
+    format_user=StringFormatter(slots=["<|bos|>user\n{{content}}<|eos|>\n<|bos|>assistant\n"]),
+    format_assistant=StringFormatter(slots=["{{content}}<|eos|>\n"]),
+    format_system=StringFormatter(slots=["<|bos|>system\n{{content}}<|eos|>\n"]),
+    format_prefix=EmptyFormatter(slots=["<|bos|>"] ),
+    stop_words=["<|eos|>"]
+)
+
+
+register_template(
     name="intern",
     format_user=StringFormatter(slots=["<|User|>:{{content}}\n<|Bot|>:"]),
     format_assistant=StringFormatter(slots=["{{content}}<eoa>\n"]),
@@ -1263,6 +1273,7 @@ register_template(
     format_user=StringFormatter(slots=["{{content}}\n"]),
     format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
     mm_plugin=get_mm_plugin(name="paligemma", image_token="<image>"),
+    template_class=Llama2Template,
 )
 
 
@@ -1277,6 +1288,7 @@ register_template(
     format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
     stop_words=["<end_of_turn>"],
     mm_plugin=get_mm_plugin(name="paligemma", image_token="<image>"),
+    template_class=Llama2Template,
 )
 
 

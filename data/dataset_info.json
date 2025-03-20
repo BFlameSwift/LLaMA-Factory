@@ -2289,5 +2289,75 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "mathwriting_symbols": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/mathwritting/mathwriting_symbols.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_synthetic": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/mathwritting/mathwriting_synthetic.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_test": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/mathwritting/mathwriting_test.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_train": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/mathwritting/mathwriting_train.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_valid": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/mathwritting/mathwriting_valid.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

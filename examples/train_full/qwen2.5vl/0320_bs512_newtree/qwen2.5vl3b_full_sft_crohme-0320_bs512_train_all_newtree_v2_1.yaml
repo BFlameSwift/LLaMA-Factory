@@ -27,7 +27,7 @@ dataloader_num_workers: 16
 ### output
 output_dir: saves/qwen2.5_vl-3b/full/sft/standred/0320_newtree/0320_bs512_train_all_newtree_v2_1
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
-logging_steps: 4
+logging_steps: 1
 save_steps: 9999 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true

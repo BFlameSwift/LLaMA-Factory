@@ -2667,5 +2667,19 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "mathwriting20k_train_20k": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/mathwritting/mathwriting20k_train_20k.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

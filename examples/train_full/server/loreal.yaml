@@ -18,11 +18,11 @@ deepspeed: examples/deepspeed/ds_z2_config.json
 ### dataset
 dataset: loreal_train
 template: qwen2_vl
-cutoff_len: 2048
+cutoff_len: 16384
 max_samples: 3000000
 overwrite_cache: true
-preprocessing_num_workers: 32
-dataloader_num_workers: 16
+preprocessing_num_workers: 128
+dataloader_num_workers: 128
 
 ### output
 output_dir: saves/loreal/trainfull/train0.8

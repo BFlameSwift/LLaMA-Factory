@@ -862,6 +862,20 @@
       "assistant_tag": "gpt"
     }
   },
+  "loreal_test": {
+    "file_name": "/home/user/workspaces/oulaya/split_dataset/train.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
   "loreal_all": {
     "file_name": "/home/user/workspaces/oulaya/data/6.prompt_data.json",
     "formatting": "sharegpt",

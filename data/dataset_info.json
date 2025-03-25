@@ -2402,34 +2402,6 @@
       "assistant_tag": "gpt"
     }
   },
-  "0320_single_error_find": {
-    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0313_error_tag_findandfix/0320_single_error_find.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "0320_single_error_fix": {
-    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0313_error_tag_findandfix/0320_single_error_fix.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
   "0319_tdtree_v1_crohme_train_cp2": {
     "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0319_new_data/0319_tdtree_v1_crohme_train_cp2.json",
     "formatting": "sharegpt",
@@ -2698,6 +2670,48 @@
   },
   "0320_multi_error_fix": {
     "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0319_new_data/0320_multi_error_fix.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting20k_train_20k": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/mathwritting/mathwriting20k_train_20k.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0320_single_error_find": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0319_new_data/0320_single_error_find.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0320_single_error_fix": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0319_new_data/0320_single_error_fix.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",

@@ -28,7 +28,7 @@ dataloader_num_workers: 128
 output_dir: saves/loreal/trainfull/train0.8
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
-save_steps: 9999 # 15个epoch
+save_steps: 100 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true
 
@@ -50,4 +50,4 @@ eval_dataset: loreal_test
 val_size: 0
 per_device_eval_batch_size: 8
 eval_strategy: steps
-eval_steps: 100
+eval_steps: 50000

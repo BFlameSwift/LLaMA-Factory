@@ -16,15 +16,13 @@ import json
 from typing import Optional
 
 import fire
-from transformers import Seq2SeqTrainingArguments
-
 from llamafactory.data import get_dataset, get_template_and_fix_tokenizer
 from llamafactory.extras.constants import IGNORE_INDEX
 from llamafactory.extras.misc import check_version, get_device_count
 from llamafactory.extras.packages import is_vllm_available
 from llamafactory.hparams import get_infer_args
 from llamafactory.model import load_tokenizer
-
+from transformers import Seq2SeqTrainingArguments
 
 if is_vllm_available():
     from vllm import LLM, SamplingParams
@@ -99,6 +97,7 @@ def vllm_infer(
             images.append(sample["images"])
         else:
             multi_modal_data = None
+            images.append([])
 
         inputs.append({"prompt_token_ids": sample["input_ids"], "multi_modal_data": multi_modal_data})
         prompts.append(tokenizer.decode(sample["input_ids"], skip_special_tokens=skip_special_tokens))
@@ -142,6 +141,10 @@ def vllm_infer(
 
     results = LLM(**engine_args).generate(inputs, sampling_params, lora_request=lora_request)
     preds = [result.outputs[0].text for result in results]
+    print(f"Generated {len(preds)} samples.")
+    print(f"Generated {len(prompts)} samples.")
+    print(f"Generated {len(labels)} samples.")
+    print(f"Generated {len(images)} samples.")
     with open(save_name, "w", encoding="utf-8") as f:
         for text, result, label, image in zip(prompts, results, labels, images):
             # 获取该输入的所有生成结果

@@ -16,15 +16,13 @@ import json
 from typing import Optional
 
 import fire
-from transformers import Seq2SeqTrainingArguments
-
 from llamafactory.data import get_dataset, get_template_and_fix_tokenizer
 from llamafactory.extras.constants import IGNORE_INDEX
 from llamafactory.extras.misc import check_version, get_device_count
 from llamafactory.extras.packages import is_vllm_available
 from llamafactory.hparams import get_infer_args
 from llamafactory.model import load_tokenizer
-
+from transformers import Seq2SeqTrainingArguments
 
 if is_vllm_available():
     from vllm import LLM, SamplingParams
@@ -111,9 +109,9 @@ def vllm_infer(
     sampling_params = SamplingParams(
         n=n,
         repetition_penalty=generating_args.repetition_penalty or 1.0,  # repetition_penalty must > 0
-        # temperature=generating_args.temperature,
-        # top_p=generating_args.top_p or 1.0,  # top_p must > 0
-        # top_k=generating_args.top_k or -1,  # top_k must > 0
+        temperature=generating_args.temperature,
+        top_p=generating_args.top_p or 1.0,  # top_p must > 0
+        top_k=generating_args.top_k or -1,  # top_k must > 0
         stop_token_ids=template_obj.get_stop_token_ids(tokenizer),
         max_tokens=generating_args.max_new_tokens,
         skip_special_tokens=skip_special_tokens,

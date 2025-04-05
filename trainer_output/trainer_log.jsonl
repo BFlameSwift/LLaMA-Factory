@@ -1,0 +1,11 @@
+{"current_steps": 1, "total_steps": 136, "loss": 1.2053, "lr": 7.142857142857143e-07, "epoch": 0.02868668758404303, "percentage": 0.74, "elapsed_time": "0:02:08", "remaining_time": "4:50:07"}
+{"current_steps": 2, "total_steps": 136, "loss": 1.1586, "lr": 1.4285714285714286e-06, "epoch": 0.05737337516808606, "percentage": 1.47, "elapsed_time": "0:03:44", "remaining_time": "4:11:05"}
+{"current_steps": 3, "total_steps": 136, "loss": 1.2419, "lr": 2.1428571428571427e-06, "epoch": 0.08606006275212909, "percentage": 2.21, "elapsed_time": "0:05:21", "remaining_time": "3:57:29"}
+{"current_steps": 4, "total_steps": 136, "loss": 1.1498, "lr": 2.8571428571428573e-06, "epoch": 0.11474675033617213, "percentage": 2.94, "elapsed_time": "0:06:58", "remaining_time": "3:50:09"}
+{"current_steps": 5, "total_steps": 136, "loss": 1.017, "lr": 3.5714285714285718e-06, "epoch": 0.14343343792021515, "percentage": 3.68, "elapsed_time": "0:08:34", "remaining_time": "3:44:50"}
+{"current_steps": 6, "total_steps": 136, "loss": 1.0366, "lr": 4.2857142857142855e-06, "epoch": 0.17212012550425818, "percentage": 4.41, "elapsed_time": "0:10:10", "remaining_time": "3:40:35"}
+{"current_steps": 7, "total_steps": 136, "loss": 0.747, "lr": 5e-06, "epoch": 0.2008068130883012, "percentage": 5.15, "elapsed_time": "0:11:47", "remaining_time": "3:37:14"}
+{"current_steps": 8, "total_steps": 136, "loss": 0.7741, "lr": 5.7142857142857145e-06, "epoch": 0.22949350067234425, "percentage": 5.88, "elapsed_time": "0:13:23", "remaining_time": "3:34:10"}
+{"current_steps": 9, "total_steps": 136, "loss": 0.4822, "lr": 6.4285714285714295e-06, "epoch": 0.2581801882563873, "percentage": 6.62, "elapsed_time": "0:15:00", "remaining_time": "3:31:44"}
+{"current_steps": 10, "total_steps": 136, "loss": 0.4728, "lr": 7.1428571428571436e-06, "epoch": 0.2868668758404303, "percentage": 7.35, "elapsed_time": "0:16:36", "remaining_time": "3:29:19"}
+{"current_steps": 11, "total_steps": 136, "loss": 0.3075, "lr": 7.857142857142858e-06, "epoch": 0.3155535634244733, "percentage": 8.09, "elapsed_time": "0:18:12", "remaining_time": "3:26:57"}

@@ -51,6 +51,7 @@ def vllm_infer(
     pipeline_parallel_size: int = 1,
     image_max_pixels: int = 768 * 768,
     image_min_pixels: int = 32 * 32,
+    n: int = 1,
 ):
     r"""Perform batch generation using vLLM engine, which supports tensor parallelism.
 
@@ -87,6 +88,7 @@ def vllm_infer(
     dataset_module = get_dataset(template_obj, model_args, data_args, training_args, "ppo", **tokenizer_module)
 
     inputs, prompts, labels = [], [], []
+    images = []
     for sample in dataset_module["train_dataset"]:
         if sample["images"]:
             multi_modal_data = {
@@ -94,6 +96,7 @@ def vllm_infer(
                     sample["images"], image_max_pixels=image_max_pixels, image_min_pixels=image_min_pixels
                 )
             }
+            images.append(sample["images"])
         else:
             multi_modal_data = None
 
@@ -106,10 +109,11 @@ def vllm_infer(
         )
 
     sampling_params = SamplingParams(
+        n=n,
         repetition_penalty=generating_args.repetition_penalty or 1.0,  # repetition_penalty must > 0
-        temperature=generating_args.temperature,
-        top_p=generating_args.top_p or 1.0,  # top_p must > 0
-        top_k=generating_args.top_k or -1,  # top_k must > 0
+        # temperature=generating_args.temperature,
+        # top_p=generating_args.top_p or 1.0,  # top_p must > 0
+        # top_k=generating_args.top_k or -1,  # top_k must > 0
         stop_token_ids=template_obj.get_stop_token_ids(tokenizer),
         max_tokens=generating_args.max_new_tokens,
         skip_special_tokens=skip_special_tokens,
@@ -139,8 +143,18 @@ def vllm_infer(
     results = LLM(**engine_args).generate(inputs, sampling_params, lora_request=lora_request)
     preds = [result.outputs[0].text for result in results]
     with open(save_name, "w", encoding="utf-8") as f:
-        for text, pred, label in zip(prompts, preds, labels):
-            f.write(json.dumps({"prompt": text, "predict": pred, "label": label}, ensure_ascii=False) + "\n")
+        for text, result, label, image in zip(prompts, results, labels, images):
+            # 获取该输入的所有生成结果
+            predictions = [output.text for output in result.outputs]
+            f.write(json.dumps({
+                "prompt": text,
+                "preds": predictions,  # 保存为列表，包含所有生成结果
+                "label": label,
+                "images": image
+            }, ensure_ascii=False) + "\n")
+    # with open(save_name, "w", encoding="utf-8") as f:
+    #     for text, pred, label, image in zip(prompts, preds, labels, images):
+    #         f.write(json.dumps({"prompt": text, "preds": pred, "label": label, "images": image}, ensure_ascii=False) + "\n")
 
     print("*" * 70)
     print(f"{len(prompts)} generated results have been saved at {save_name}.")

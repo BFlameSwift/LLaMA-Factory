@@ -19,6 +19,7 @@ deepspeed: examples/deepspeed/ds_z3_config.json
 dataset: crohme_train,0320_multi_error_fix_with_correction
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
+template: qwen2_vl
 save_steps: 9999 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true

@@ -10,13 +10,13 @@ stage: sft
 do_train: true
 finetuning_type: full
 freeze_vision_tower: false # choices: [true, false]
-freeze_multi_modal_projector: false # choices: [true, false]
-freeze_language_model: false # choices: [true, false]
+freeze_multi_modal_projector: false  # choices: [true, false]
+freeze_language_model: false  # choices: [true, false]
 # train_mm_proj_only: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: crohme_train,crohme2023_train_final,0319_tdtree_v2_crohme_train,0325_crohme2023_tdv2_2crohme2023_train_final
+dataset: crohme_train,crohme2023_train_final
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 2000000
@@ -25,10 +25,10 @@ preprocessing_num_workers: 32
 dataloader_num_workers: 16
 
 ### output
-output_dir: saves/qwen2.5_vl-3b/full/sft/standred/more_data/0327_full_crohme+2023_bs512_2epoch_tree_1
+output_dir: saves/qwen2.5_vl-3b/full/sft/standred/more_data/0401_full_crohme+2023_bs512_2epoch_2
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
-save_steps: 9999 # 15个epoch
+save_steps: 100 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true
 

@@ -3115,5 +3115,397 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "crohme_train_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme_train_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_train_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_train_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_train_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/hme100k_train_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_test_0406": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/hme100k_test_0406.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_valid_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_valid_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_test_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_test_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_test_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_test_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2023_no_train_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2023_no_train_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2014_test_processed_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2014_test_processed_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_synthetic_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_synthetic_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_symbols_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_symbols_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_symbols_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_symbols_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2019_test_processed_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2019_test_processed_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2023_test_processed_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2023_test_processed_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2014_test_processed_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2014_test_processed_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2016_test_processed_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2016_test_processed_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2023_no_train_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2023_no_train_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_train_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_train_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2016_test_processed_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2016_test_processed_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2023_test_processed_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2023_test_processed_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_synthetic_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_synthetic_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_valid_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/mathwriting_valid_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "N2": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/N2.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "N1": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/N1.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_train_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/hme100k_train_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2019_test_processed_0404_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme2019_test_processed_0404_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "N3": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/N3.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_train_0406_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0406final/crohme_train_0406_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

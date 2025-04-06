@@ -50,6 +50,7 @@ def vllm_infer(
     image_max_pixels: int = 768 * 768,
     image_min_pixels: int = 32 * 32,
     n: int = 1,
+    is_sampled: bool = False,
 ):
     r"""Perform batch generation using vLLM engine, which supports tensor parallelism.
 
@@ -106,13 +107,23 @@ def vllm_infer(
                 list(filter(lambda x: x != IGNORE_INDEX, sample["labels"])), skip_special_tokens=skip_special_tokens
             )
         )
-
+    if not is_sampled:
+        top_k = generating_args.top_k
+        top_p = generating_args.top_p
+        temperature = generating_args.temperature
+    print("*" * 70)
+    print("is_sampled:", is_sampled)
+    print("top_k:", top_k)
+    print("*" * 70)
     sampling_params = SamplingParams(
         n=n,
         repetition_penalty=generating_args.repetition_penalty or 1.0,  # repetition_penalty must > 0
-        temperature=generating_args.temperature,
-        top_p=generating_args.top_p or 1.0,  # top_p must > 0
-        top_k=generating_args.top_k or -1,  # top_k must > 0
+        # temperature=generating_args.temperature,
+        # top_p=generating_args.top_p or 1.0,  # top_p must > 0
+        # top_k=generating_args.top_k or -1,  # top_k must > 0
+        temperature=temperature,
+        top_p=top_p,
+        top_k=top_k,
         stop_token_ids=template_obj.get_stop_token_ids(tokenizer),
         max_tokens=generating_args.max_new_tokens,
         skip_special_tokens=skip_special_tokens,

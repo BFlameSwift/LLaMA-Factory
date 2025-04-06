@@ -44,10 +44,10 @@ ddp_timeout: 180000000
 save_only_model: true
 resume_from_checkpoint: null
 
-### eval
-eval_dataset: mathwriting_synthetic_val_fold_3_of_3
-#  ,crohme_2016,crohme_2019
-val_size: 0
-per_device_eval_batch_size: 8
-eval_strategy: steps
-eval_steps: 9999
+# ### eval
+# eval_dataset: mathwriting_synthetic_val_fold_3_of_3
+# #  ,crohme_2016,crohme_2019
+# val_size: 0
+# per_device_eval_batch_size: 8
+# eval_strategy: steps
+# eval_steps: 9999

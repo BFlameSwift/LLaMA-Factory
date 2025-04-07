@@ -16,27 +16,27 @@ freeze_language_model: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: mathwriting_train_train_fold_1_of_3,crohme_train
+dataset: crohme_train,crohme2023_no_train_0407_final,0319_tdtree_v2_crohme_train,crohme2023_test_processed_0407_final_tree
 template: qwen2_vl
 cutoff_len: 2048
-max_samples: 200000
+max_samples: 2000000
 overwrite_cache: true
-preprocessing_num_workers: 32
-dataloader_num_workers: 16
+preprocessing_num_workers: 128
+dataloader_num_workers: 128
 
 ### output
-output_dir: saves/qwen2.5_vl-3b/full/sft/standred/split/0404_bs512_math_train_split_1_2epoch
+output_dir: saves/qwen2.5_vl-3b/full/sft/standred/04more_new_data/0407_full_crohme+2023_bs512_2epoch_tree_2
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
-save_steps: 9999 # 15个epoch
+save_steps: 100 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true
 
 ### train
-per_device_train_batch_size: 4
-gradient_accumulation_steps: 32
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 16
 learning_rate: 1.0e-5
-num_train_epochs: 1.0
+num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
 bf16: true
@@ -45,9 +45,9 @@ save_only_model: true
 resume_from_checkpoint: null
 
 ### eval
-# eval_dataset: mathwriting_train_val_fold_1_of_3
-# #  ,crohme_2016,crohme_2019
-# val_size: 0
-# per_device_eval_batch_size: 8
-# eval_strategy: steps
-# eval_steps: 9999
+eval_dataset: crohme_2014,crohme_2016,crohme_2019
+#  ,crohme_2016,crohme_2019
+val_size: 0
+per_device_eval_batch_size: 8
+eval_strategy: steps
+eval_steps: 1000

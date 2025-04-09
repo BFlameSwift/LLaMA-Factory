@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import json
+import time
 from typing import Optional
 
 import fire
@@ -51,6 +52,7 @@ def vllm_infer(
     image_min_pixels: int = 32 * 32,
     n: int = 1,
     is_sampled: bool = False,
+    batch_size: int = 65536,
 ):
     r"""Perform batch generation using vLLM engine, which supports tensor parallelism.
 
@@ -88,25 +90,9 @@ def vllm_infer(
 
     inputs, prompts, labels = [], [], []
     images = []
-    for sample in dataset_module["train_dataset"]:
-        if sample["images"]:
-            multi_modal_data = {
-                "image": template_obj.mm_plugin._regularize_images(
-                    sample["images"], image_max_pixels=image_max_pixels, image_min_pixels=image_min_pixels
-                )
-            }
-            images.append(sample["images"])
-        else:
-            multi_modal_data = None
-            images.append([])
 
-        inputs.append({"prompt_token_ids": sample["input_ids"], "multi_modal_data": multi_modal_data})
-        prompts.append(tokenizer.decode(sample["input_ids"], skip_special_tokens=skip_special_tokens))
-        labels.append(
-            tokenizer.decode(
-                list(filter(lambda x: x != IGNORE_INDEX, sample["labels"])), skip_special_tokens=skip_special_tokens
-            )
-        )
+    
+    
     if not is_sampled:
         top_k = generating_args.top_k
         top_p = generating_args.top_p
@@ -115,6 +101,7 @@ def vllm_infer(
     print("is_sampled:", is_sampled)
     print("top_k:", top_k)
     print("*" * 70)
+    
     sampling_params = SamplingParams(
         n=n,
         repetition_penalty=generating_args.repetition_penalty or 1.0,  # repetition_penalty must > 0
@@ -149,29 +136,113 @@ def vllm_infer(
 
     if isinstance(model_args.vllm_config, dict):
         engine_args.update(model_args.vllm_config)
+        
+    llm_engine = LLM(**engine_args)
 
-    results = LLM(**engine_args).generate(inputs, sampling_params, lora_request=lora_request)
-    preds = [result.outputs[0].text for result in results]
-    print(f"Generated {len(preds)} samples.")
-    print(f"Generated {len(prompts)} samples.")
-    print(f"Generated {len(labels)} samples.")
-    print(f"Generated {len(images)} samples.")
+    # 分批读取数据并进行推理
+    # def batch_iterator(data_list, batch_size):
+    #     """简单的分批切片迭代器。"""
+    #     for i in range(0, len(data_list), batch_size):
+    #         yield data_list[i : i + batch_size]
+    def batch_iterator(ds, batch_size):
+        length = len(ds)
+        for start_idx in range(0, length, batch_size):
+            end_idx = min(start_idx + batch_size, length)
+            # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
+            sub_dataset = ds.select(range(start_idx, end_idx))
+            yield sub_dataset
+    print(f"Batch size: {batch_size}")
+    print(type(dataset_module["train_dataset"]))
+    
+    total_samples = len(dataset_module["train_dataset"])
+    print(f"Total dataset size: {total_samples}")
+    processed_samples = 0
+
+    # 打开文件写入（在循环外打开，避免反复打开）
     with open(save_name, "w", encoding="utf-8") as f:
-        for text, result, label, image in zip(prompts, results, labels, images):
-            # 获取该输入的所有生成结果
-            predictions = [output.text for output in result.outputs]
-            f.write(json.dumps({
-                "prompt": text,
-                "preds": predictions,  # 保存为列表，包含所有生成结果
-                "label": label,
-                "images": image
-            }, ensure_ascii=False) + "\n")
-    # with open(save_name, "w", encoding="utf-8") as f:
-    #     for text, pred, label, image in zip(prompts, preds, labels, images):
-    #         f.write(json.dumps({"prompt": text, "preds": pred, "label": label, "images": image}, ensure_ascii=False) + "\n")
+        # 遍历所有 batch
+        batch_idx = 0
+        print("time to start:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        for batch_data in batch_iterator(dataset_module["train_dataset"], batch_size):
+            batch_inputs = []
+            batch_prompts = []
+            batch_labels = []
+            batch_images = []
+            print("start batch", batch_idx)
+            print("data to process:", total_samples - processed_samples)
+            start_time = time.time()
+            # 准备好输入给 vLLM 的格式
+            print(type(batch_data))
+            # print(batch_data.keys())
+            # breakpoint()
+            # print(type(batch_data[0]))
+            print("*" * 70)
+            for sample in batch_data:
+                if sample["images"]:
+                    # 处理多模态图像数据
+                    multi_modal_data = {
+                        "image": template_obj.mm_plugin._regularize_images(
+                            sample["images"],
+                            image_max_pixels=image_max_pixels,
+                            image_min_pixels=image_min_pixels
+                        )
+                    }
+                    batch_images.append(sample["images"])
+                else:
+                    multi_modal_data = None
+                    batch_images.append([])
+
+                # input_ids
+                input_ids = sample["input_ids"]
+                # prompt
+                prompt_text = tokenizer.decode(input_ids, skip_special_tokens=skip_special_tokens)
+
+                # label
+                filtered_label_ids = list(filter(lambda x: x != IGNORE_INDEX, sample["labels"]))
+                label_text = tokenizer.decode(filtered_label_ids, skip_special_tokens=skip_special_tokens)
+
+                # 整理成 vLLM 推理需要的形式
+                batch_inputs.append({"prompt_token_ids": input_ids, "multi_modal_data": multi_modal_data})
+                batch_prompts.append(prompt_text)
+                batch_labels.append(label_text)
+            end_time = time.time()
+            print("*" * 70)
+            print(f"Data loading time: {end_time - start_time:.2f} seconds")
+            print(f"Total dataset size: {len(batch_inputs)}")
+            print("per sample time:", (end_time - start_time) / len(batch_inputs))
+            print(f"Batch size: {len(batch_inputs)}")
+            print("*" * 70)
+
+            before_inference_time = time.time()
+            # 调用 vLLM 进行推理
+            batch_results = llm_engine.generate(
+                batch_inputs,
+                sampling_params,
+                lora_request=lora_request
+            )
+            end_inference_time = time.time()
+            print(f"Batch inference time: {end_inference_time - before_inference_time:.2f} seconds")
+            print(f"Total dataset size: {len(batch_results)}")
+            print("per sample time:", (end_inference_time - before_inference_time) / len(batch_results))
+            print(f"Batch size: {len(batch_results)}")
+
+            # 将结果写入文件
+            for text, result, label, image in zip(batch_prompts, batch_results, batch_labels, batch_images):
+                # 该输入可能有多个生成 (n>1)，取所有结果
+                predictions = [output.text for output in result.outputs]
+                f.write(json.dumps({
+                    "prompt": text,
+                    "preds": predictions,
+                    "label": label,
+                    "images": image
+                }, ensure_ascii=False) + "\n")
+
+            processed_samples += len(batch_data)
+            print(f"Processed {processed_samples}/{total_samples} samples...")
+            print("time to finish:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() + (total_samples - processed_samples) * (end_inference_time - before_inference_time) / len(batch_results))))
 
     print("*" * 70)
-    print(f"{len(prompts)} generated results have been saved at {save_name}.")
+    print(f"{processed_samples} generated results have been saved to {save_name}.")
     print("*" * 70)
 
 

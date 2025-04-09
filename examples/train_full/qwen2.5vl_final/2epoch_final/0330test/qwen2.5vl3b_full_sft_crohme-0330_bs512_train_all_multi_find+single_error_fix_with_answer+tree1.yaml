@@ -10,33 +10,33 @@ stage: sft
 do_train: true
 finetuning_type: full
 freeze_vision_tower: false # choices: [true, false]
-freeze_multi_modal_projector: false  # choices: [true, false]
-freeze_language_model: false  # choices: [true, false]
+freeze_multi_modal_projector: false # choices: [true, false]
+freeze_language_model: false # choices: [true, false]
 # train_mm_proj_only: false # choices: [true, false]
-deepspeed: examples/deepspeed/ds_z2_config.json
+deepspeed: examples/deepspeed/ds_z3_config.json
 
 ### dataset
-dataset: crohme_train,hme100k_train
+dataset: crohme_train,0320_single_error_fix_with_correction,0320_multi_error_find,0319_tdtree_v2_crohme_train
 template: qwen2_vl
 cutoff_len: 2048
-max_samples: 2000000
+max_samples: 200000
 overwrite_cache: true
 preprocessing_num_workers: 32
 dataloader_num_workers: 16
 
 ### output
-output_dir: saves/qwen2.5_vl-3b/full/sft/standred/more_data/0321_full_crohme+hme100k_bs512_4epoch_1
+output_dir: saves/qwen2.5_vl-3b/full/sft/standred/sft-error/0330_full_crohme_bs512_2epoch_multi_find+single_error_fix_with_answer+tree1
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
-save_steps: 9999 # 15个epoch
+save_steps: 75 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true
 
 ### train
-per_device_train_batch_size: 4
-gradient_accumulation_steps: 64
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 16
 learning_rate: 1.0e-5
-num_train_epochs: 4.0
+num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
 bf16: true
@@ -50,4 +50,4 @@ eval_dataset: crohme_2014,crohme_2016,crohme_2019
 val_size: 0
 per_device_eval_batch_size: 8
 eval_strategy: steps
-eval_steps: 1000
+eval_steps: 90

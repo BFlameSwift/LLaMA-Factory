@@ -4011,5 +4011,215 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "hme100k_test_processed_0407_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/hme100k_test_processed_0407_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_test_processed_0408_final_bttr": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/bttr/hme100k_test_processed_0408_final_bttr.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2014_test_processed_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/crohme2014_test_processed_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2023_test_processed_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/crohme2023_test_processed_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_symbols_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/mathwriting_symbols_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2016_test_processed_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/crohme2016_test_processed_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_train_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/mathwriting_train_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_test_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/mathwriting_test_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_test_processed_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/hme100k_test_processed_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_valid_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/mathwriting_valid_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2023_no_train_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/crohme2023_no_train_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_train_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/crohme_train_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_synthetic_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/mathwriting_synthetic_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_train_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/hme100k_train_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme2019_test_processed_0409_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0407final/can/crohme2019_test_processed_0409_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

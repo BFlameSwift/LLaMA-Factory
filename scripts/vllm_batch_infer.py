@@ -161,11 +161,15 @@ def vllm_infer(
     # 打开文件写入（在循环外打开，避免反复打开）
     with open(save_name, "w", encoding="utf-8") as f:
         # 遍历所有 batch
+        batch_idx = 0
+        print("time to start:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         for batch_data in batch_iterator(dataset_module["train_dataset"], batch_size):
             batch_inputs = []
             batch_prompts = []
             batch_labels = []
             batch_images = []
+            print("start batch", batch_idx)
+            print("data to process:", total_samples - processed_samples)
             start_time = time.time()
             # 准备好输入给 vLLM 的格式
             print(type(batch_data))
@@ -235,6 +239,7 @@ def vllm_infer(
 
             processed_samples += len(batch_data)
             print(f"Processed {processed_samples}/{total_samples} samples...")
+            print("time to finish:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() + (total_samples - processed_samples) * (end_inference_time - before_inference_time) / len(batch_results))))
 
     print("*" * 70)
     print(f"{processed_samples} generated results have been saved to {save_name}.")

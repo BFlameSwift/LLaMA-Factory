@@ -1,3 +1,4 @@
+import json
 def convert_format(input_data):
     """
     将第一种格式 {"input", "target":""} 转换为第二种格式 {"messages": [...]}
@@ -16,21 +17,24 @@ def convert_format(input_data):
     output_data = {
         "messages": [
             {
-                "content": input_text,
-                "role": "user"
+                "from": "human",
+                "value": input_text,
             },
             {
-                "content": target_text,
-                "role": "assistant"
+                "from": "gpt",
+                "value": target_text,
             }
         ]
     }
     
     return output_data
 
-input_path = "/home/jiangjin/mydata/jiuzhoutong/yjyy_train_data.jsonl"
 
-output_path = "/home/jiangjin/mydata/jiuzhoutong/proc_yjyy_train_data.jsonl"
+# input_data = json.load(open("/home/jiangjin/mydata/jiuzhoutong/qwen-max/sft_data/jiuzhoutong_4_17216.jsonl", "r", encoding="utf-8"))
+
+input_path = "/home/jiangjin/mydata/jiuzhoutong/qwen-max/sft_data/jiuzhoutong_4_17216.jsonl"
+
+output_path = "/home/jiangjin/mydata/jiuzhoutong/jiuzhoutong_4_17216_0409.jsonl"
 
 import json
 import os

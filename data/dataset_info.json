@@ -1352,6 +1352,19 @@
       "assistant_tag": "gpt"
     }
   },
+  "jiuzhoutong_4_17216_0409": {
+    "file_name": "/home/jiangjin/mydata/jiuzhoutong/jiuzhoutong_4_17216_0409.jsonl",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
   "fewshot_bt_ast_crohme_2014": {
     "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/0210_fewshot_bt-ast/fewshot_bt_ast_crohme_2014.json",
     "formatting": "sharegpt",

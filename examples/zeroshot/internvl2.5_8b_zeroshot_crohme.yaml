@@ -1,0 +1,34 @@
+# from https://llamafactory.readthedocs.io/zh-cn/latest/getting_started/inference.html
+
+### model
+model_name_or_path: OpenGVLab/InternVL2_5-8B
+
+# adapter_name_or_path: saves/qwen2_vl-2b/lora/sft/rank256-epoch15-0102/checkpoint-31
+# finetuning_type: lora
+
+### method
+stage: sft
+do_predict: true
+finetuning_type: full
+
+# deepspeed: examples/deepspeed/ds_z3_config.yaml # deepspeed配置文件
+
+### dataset
+eval_dataset: crohme_2014_boxed,crohme_2016_boxed,crohme_2019_boxed,hme100k_test_boxed
+template: qwen2_vl
+cutoff_len: 2048
+max_samples: 100000
+overwrite_cache: true
+preprocessing_num_workers: 32
+
+### output
+output_dir: saves/zero_shot/intern.5vl8b/crohme_2014_2016_2019_hme100k_test
+overwrite_output_dir: true
+
+### eval
+per_device_eval_batch_size: 32
+predict_with_generate: true
+ddp_timeout: 180000000
+mask_history: False
+infer_backend: huggingface
+vllm_max_lora_rank: 256

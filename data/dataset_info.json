@@ -3857,5 +3857,89 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "crohme_train_lora": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/archive/nospace/crohme_train_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_train_lora": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/archive/nospace/hme100k_train_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "hme100k_test_lora": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/archive/nospace/hme100k_test_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_2019_lora": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/archive/nospace/crohme_2019_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_2016_lora": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/archive/nospace/crohme_2016_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "crohme_2014_lora": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/archive/nospace/crohme_2014_lora.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

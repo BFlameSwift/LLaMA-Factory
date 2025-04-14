@@ -61,7 +61,7 @@ def vllm_infer(
     check_version("vllm>=0.4.3,<=0.7.3")
     if pipeline_parallel_size > get_device_count():
         raise ValueError("Pipeline parallel size should be smaller than the number of gpus.")
-
+    adapter_name_or_path = None
     model_args, data_args, _, generating_args = get_infer_args(
         dict(
             model_name_or_path=model_name_or_path,
@@ -116,10 +116,11 @@ def vllm_infer(
         skip_special_tokens=skip_special_tokens,
         seed=seed,
     )
-    if model_args.adapter_name_or_path is not None:
-        lora_request = LoRARequest("default", 1, model_args.adapter_name_or_path[0])
-    else:
-        lora_request = None
+)
+    # if model_args.adapter_name_or_path is not None:
+    #     lora_request = LoRARequest("default", 1, model_args.adapter_name_or_path[0])
+    # else:
+    lora_request = None
 
     engine_args = {
         "model": model_args.model_name_or_path,

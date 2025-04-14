@@ -116,11 +116,11 @@ def vllm_infer(
         skip_special_tokens=skip_special_tokens,
         seed=seed,
     )
-)
-    # if model_args.adapter_name_or_path is not None:
-    #     lora_request = LoRARequest("default", 1, model_args.adapter_name_or_path[0])
-    # else:
-    lora_request = None
+    
+    if model_args.adapter_name_or_path is not None:
+        lora_request = LoRARequest("default", 1, model_args.adapter_name_or_path[0])
+    else:
+        lora_request = None
 
     engine_args = {
         "model": model_args.model_name_or_path,

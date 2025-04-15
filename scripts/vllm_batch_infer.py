@@ -16,6 +16,8 @@ import json
 import time
 from typing import Optional
 
+import gc
+
 import fire
 from llamafactory.data import get_dataset, get_template_and_fix_tokenizer
 from llamafactory.extras.constants import IGNORE_INDEX
@@ -53,6 +55,7 @@ def vllm_infer(
     n: int = 1,
     is_sampled: bool = False,
     batch_size: int = 65536,
+    use_streaming: bool = False,
 ):
     r"""Perform batch generation using vLLM engine, which supports tensor parallelism.
 
@@ -86,6 +89,8 @@ def vllm_infer(
     tokenizer = tokenizer_module["tokenizer"]
     template_obj = get_template_and_fix_tokenizer(tokenizer, data_args)
     template_obj.mm_plugin.expand_mm_tokens = False  # for vllm generate
+    if use_streaming:
+        data_args.streaming = True
     dataset_module = get_dataset(template_obj, model_args, data_args, training_args, "ppo", **tokenizer_module)
 
     inputs, prompts, labels = [], [], []
@@ -144,13 +149,32 @@ def vllm_infer(
     #     """简单的分批切片迭代器。"""
     #     for i in range(0, len(data_list), batch_size):
     #         yield data_list[i : i + batch_size]
-    def batch_iterator(ds, batch_size):
-        length = len(ds)
-        for start_idx in range(0, length, batch_size):
-            end_idx = min(start_idx + batch_size, length)
-            # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
-            sub_dataset = ds.select(range(start_idx, end_idx))
-            yield sub_dataset
+    def batch_iterator(dataset_iter, batch_size):
+        if use_streaming:
+            # streaming 模式下，dataset_iter 是个可迭代对象
+            batch = []
+            for item in dataset_iter:
+                batch.append(item)
+                if len(batch) == batch_size:
+                    yield batch
+                    batch = []
+            if batch:
+                yield batch
+        else:
+            # 非 streaming, dataset_iter 是个 Dataset 对象，可以获取长度
+            length = len(dataset_iter)
+            for start_idx in range(0, length, batch_size):
+                end_idx = min(start_idx + batch_size, length)
+                # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
+                sub_dataset = dataset_iter.select(range(start_idx, end_idx))
+                yield sub_dataset
+    # def batch_iterator(ds, batch_size):
+    #     length = len(ds)
+    #     for start_idx in range(0, length, batch_size):
+    #         end_idx = min(start_idx + batch_size, length)
+    #         # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
+    #         sub_dataset = ds.select(range(start_idx, end_idx))
+    #         yield sub_dataset
     print(f"Batch size: {batch_size}")
     print(type(dataset_module["train_dataset"]))
     
@@ -240,6 +264,9 @@ def vllm_infer(
             processed_samples += len(batch_data)
             print(f"Processed {processed_samples}/{total_samples} samples...")
             print("time to finish:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() + (total_samples - processed_samples) * (end_inference_time - before_inference_time) / len(batch_results))))
+            
+            del batch_data, batch_inputs, batch_prompts, batch_labels, batch_results, batch_images
+            gc.collect()
 
     print("*" * 70)
     print(f"{processed_samples} generated results have been saved to {save_name}.")

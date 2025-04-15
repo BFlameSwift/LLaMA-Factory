@@ -193,6 +193,7 @@ def vllm_infer(
             batch_prompts = []
             batch_labels = []
             batch_images = []
+            llm_engine = LLM(**engine_args)
             print("start batch", batch_idx)
             print("data to process:", total_samples - processed_samples)
             start_time = time.time()

@@ -143,7 +143,7 @@ def vllm_infer(
     if isinstance(model_args.vllm_config, dict):
         engine_args.update(model_args.vllm_config)
         
-    # llm_engine = LLM(**engine_args)
+    llm_engine = LLM(**engine_args)
 
     # 分批读取数据并进行推理
     # def batch_iterator(data_list, batch_size):
@@ -193,7 +193,7 @@ def vllm_infer(
             batch_prompts = []
             batch_labels = []
             batch_images = []
-            llm_engine = LLM(**engine_args)
+            # llm_engine = LLM(**engine_args)
             print("start batch", batch_idx)
             print("data to process:", total_samples - processed_samples)
             start_time = time.time()
@@ -268,7 +268,7 @@ def vllm_infer(
             print("time to finish:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() + (total_samples - processed_samples) * (end_inference_time - before_inference_time) / len(batch_results))))
             
             del batch_data, batch_inputs, batch_prompts, batch_labels, batch_results, batch_images
-            del llm_engine
+            # del llm_engine
             gc.collect()
 
     print("*" * 70)

@@ -216,6 +216,7 @@ def vllm_infer(
             if skip_n > batch_size*batch_idx:
                 print("skip batch:", batch_idx)
                 batch_idx += 1
+                processed_samples += len(batch_data)
                 continue
             for sample in batch_data:
                 if sample["images"]:
@@ -279,6 +280,7 @@ def vllm_infer(
                 }, ensure_ascii=False) + "\n")
 
             processed_samples += len(batch_data)
+            batch += 1
             print(f"Processed {processed_samples}/{total_samples} samples...")
             print("time to finish:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() + (total_samples - processed_samples) * (end_inference_time - before_inference_time) / len(batch_results))))
             

@@ -56,6 +56,7 @@ def vllm_infer(
     is_sampled: bool = False,
     batch_size: int = 65536,
     use_streaming: bool = False,
+    skip_n: int = 0,
 ):
     r"""Perform batch generation using vLLM engine, which supports tensor parallelism.
 
@@ -151,7 +152,9 @@ def vllm_infer(
     #     for i in range(0, len(data_list), batch_size):
     #         yield data_list[i : i + batch_size]
     def batch_iterator(dataset_iter, batch_size):
+        print("is streaming:", use_streaming)
         if use_streaming:
+            
             # streaming 模式下，dataset_iter 是个可迭代对象
             batch = []
             for item in dataset_iter:
@@ -176,6 +179,8 @@ def vllm_infer(
     #         # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
     #         sub_dataset = ds.select(range(start_idx, end_idx))
     #         yield sub_dataset
+    print("=" * 70)
+    print("vLLM batch inference")
     print(f"Batch size: {batch_size}")
     print(type(dataset_module["train_dataset"]))
     
@@ -196,6 +201,7 @@ def vllm_infer(
             # llm_engine = LLM(**engine_args)
             print("start batch", batch_idx)
             print("data to process:", total_samples - processed_samples)
+            
             start_time = time.time()
             # 准备好输入给 vLLM 的格式
             print(type(batch_data))
@@ -203,6 +209,10 @@ def vllm_infer(
             # breakpoint()
             # print(type(batch_data[0]))
             print("*" * 70)
+            if skip_n > batch_size*batch_idx:
+                print("skip batch:", batch_idx)
+                batch_idx += 1
+                continue
             for sample in batch_data:
                 if sample["images"]:
                     # 处理多模态图像数据
@@ -238,6 +248,7 @@ def vllm_infer(
             print("per sample time:", (end_time - start_time) / len(batch_inputs))
             print(f"Batch size: {len(batch_inputs)}")
             print("*" * 70)
+            
 
             before_inference_time = time.time()
             # 调用 vLLM 进行推理

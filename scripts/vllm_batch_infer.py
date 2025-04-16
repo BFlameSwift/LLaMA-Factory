@@ -57,6 +57,7 @@ def vllm_infer(
     batch_size: int = 65536,
     use_streaming: bool = False,
     skip_n: int = 0,
+    stop_at: int = 1e9,
 ):
     r"""Perform batch generation using vLLM engine, which supports tensor parallelism.
 
@@ -218,6 +219,9 @@ def vllm_infer(
                 batch_idx += 1
                 processed_samples += len(batch_data)
                 continue
+            if stop_at <= batch_size*batch_idx:
+                print("stop batch:", batch_idx)
+                break
             for sample in batch_data:
                 if sample["images"]:
                     # 处理多模态图像数据
@@ -280,7 +284,7 @@ def vllm_infer(
                 }, ensure_ascii=False) + "\n")
 
             processed_samples += len(batch_data)
-            batch += 1
+            batch_idx += 1
             print(f"Processed {processed_samples}/{total_samples} samples...")
             print("time to finish:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() + (total_samples - processed_samples) * (end_inference_time - before_inference_time) / len(batch_results))))
             

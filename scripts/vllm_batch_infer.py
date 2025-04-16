@@ -172,6 +172,7 @@ def vllm_infer(
                 # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
                 sub_dataset = dataset_iter.select(range(start_idx, end_idx))
                 yield sub_dataset
+                
     # def batch_iterator(ds, batch_size):
     #     length = len(ds)
     #     for start_idx in range(0, length, batch_size):
@@ -183,8 +184,11 @@ def vllm_infer(
     print("vLLM batch inference")
     print(f"Batch size: {batch_size}")
     print(type(dataset_module["train_dataset"]))
-    
-    total_samples = len(dataset_module["train_dataset"])
+    if use_streaming:
+        print("streaming dataset")
+        total_samples = 74759
+    else:
+        total_samples = len(dataset_module["train_dataset"])
     print(f"Total dataset size: {total_samples}")
     processed_samples = 0
 

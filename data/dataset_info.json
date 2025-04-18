@@ -4065,13 +4065,16 @@
   },
   "0417_hme100k_multi_error_find": {
     "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0410final/error_data/0417_hme100k_multi_error_find.json",
-    "messages": "messages",
-    "images": "images"
-  },
-  "tag": {
-    "role_tag": "from",
-    "content_tag": "value",
-    "user_tag": "human",
-    "assistant_tag": "gpt"
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

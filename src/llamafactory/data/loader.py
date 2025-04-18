@@ -123,6 +123,8 @@ def _load_single_dataset(
             streaming=data_args.streaming,
         )
     else:
+        if data_args.streaming == True:
+            data_args.preprocessing_num_workers = None
         dataset = load_dataset(
             path=data_path,
             name=data_name,
@@ -284,6 +286,9 @@ def get_dataset(
             tokenized_data = load_from_disk(data_args.tokenized_path)
             dataset_module = get_dataset_module(tokenized_data)
             if data_args.streaming:
+                print("==" * 100)
+                print("WARNING: Streaming mode is not supported when loading from disk.")
+                print("==" * 100)
                 dataset_module["train_dataset"] = dataset_module["train_dataset"].to_iterable_dataset()
 
             logger.info_rank0(f"Loaded tokenized dataset from {data_args.tokenized_path}.")

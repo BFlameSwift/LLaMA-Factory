@@ -56,6 +56,8 @@ def vllm_infer(
     is_sampled: bool = False,
     batch_size: int = 65536,
     use_streaming: bool = False,
+    skip_n: int = 0,
+    stop_at: int = 1e9,
 ):
     r"""Perform batch generation using vLLM engine, which supports tensor parallelism.
 
@@ -64,7 +66,7 @@ def vllm_infer(
     check_version("vllm>=0.4.3,<=0.7.3")
     if pipeline_parallel_size > get_device_count():
         raise ValueError("Pipeline parallel size should be smaller than the number of gpus.")
-
+    adapter_name_or_path = None
     model_args, data_args, _, generating_args = get_infer_args(
         dict(
             model_name_or_path=model_name_or_path,
@@ -121,6 +123,7 @@ def vllm_infer(
         skip_special_tokens=skip_special_tokens,
         seed=seed,
     )
+    
     if model_args.adapter_name_or_path is not None:
         lora_request = LoRARequest("default", 1, model_args.adapter_name_or_path[0])
     else:
@@ -150,7 +153,9 @@ def vllm_infer(
     #     for i in range(0, len(data_list), batch_size):
     #         yield data_list[i : i + batch_size]
     def batch_iterator(dataset_iter, batch_size):
+        print("is streaming:", use_streaming)
         if use_streaming:
+            
             # streaming 模式下，dataset_iter 是个可迭代对象
             batch = []
             for item in dataset_iter:
@@ -168,6 +173,7 @@ def vllm_infer(
                 # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
                 sub_dataset = dataset_iter.select(range(start_idx, end_idx))
                 yield sub_dataset
+                
     # def batch_iterator(ds, batch_size):
     #     length = len(ds)
     #     for start_idx in range(0, length, batch_size):
@@ -175,10 +181,15 @@ def vllm_infer(
     #         # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
     #         sub_dataset = ds.select(range(start_idx, end_idx))
     #         yield sub_dataset
+    print("=" * 70)
+    print("vLLM batch inference")
     print(f"Batch size: {batch_size}")
     print(type(dataset_module["train_dataset"]))
-    
-    total_samples = len(dataset_module["train_dataset"])
+    if use_streaming:
+        print("streaming dataset")
+        total_samples = 74759
+    else:
+        total_samples = len(dataset_module["train_dataset"])
     print(f"Total dataset size: {total_samples}")
     processed_samples = 0
 
@@ -192,8 +203,10 @@ def vllm_infer(
             batch_prompts = []
             batch_labels = []
             batch_images = []
+            # llm_engine = LLM(**engine_args)
             print("start batch", batch_idx)
             print("data to process:", total_samples - processed_samples)
+            
             start_time = time.time()
             # 准备好输入给 vLLM 的格式
             print(type(batch_data))
@@ -201,6 +214,14 @@ def vllm_infer(
             # breakpoint()
             # print(type(batch_data[0]))
             print("*" * 70)
+            if skip_n > batch_size*batch_idx:
+                print("skip batch:", batch_idx)
+                batch_idx += 1
+                processed_samples += len(batch_data)
+                continue
+            if stop_at <= batch_size*batch_idx:
+                print("stop batch:", batch_idx)
+                break
             for sample in batch_data:
                 if sample["images"]:
                     # 处理多模态图像数据
@@ -236,6 +257,7 @@ def vllm_infer(
             print("per sample time:", (end_time - start_time) / len(batch_inputs))
             print(f"Batch size: {len(batch_inputs)}")
             print("*" * 70)
+            
 
             before_inference_time = time.time()
             # 调用 vLLM 进行推理
@@ -262,10 +284,12 @@ def vllm_infer(
                 }, ensure_ascii=False) + "\n")
 
             processed_samples += len(batch_data)
+            batch_idx += 1
             print(f"Processed {processed_samples}/{total_samples} samples...")
             print("time to finish:", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() + (total_samples - processed_samples) * (end_inference_time - before_inference_time) / len(batch_results))))
             
             del batch_data, batch_inputs, batch_prompts, batch_labels, batch_results, batch_images
+            # del llm_engine
             gc.collect()
 
     print("*" * 70)

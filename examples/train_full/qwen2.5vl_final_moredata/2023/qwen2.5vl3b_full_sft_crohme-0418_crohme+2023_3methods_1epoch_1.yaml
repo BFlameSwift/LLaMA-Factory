@@ -28,7 +28,7 @@ dataloader_num_workers: 128
 output_dir: saves/qwen2.5_vl-3b/full/sft/standred/041x-all-methods/0418_full_crohme+2023_3methods_1epoch_1
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
-save_steps: 100 # 15个epoch
+save_steps: 50 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true
 

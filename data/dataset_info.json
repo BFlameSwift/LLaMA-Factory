@@ -680,174 +680,6 @@
     },
     "folder": "python"
   },
-  "crohme2023_CROHME2014_test": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/crohme2023_white/crohme2023_CROHME2014_test.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "crohme2023_train": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/crohme2023_white/crohme2023_train.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "crohme2023_CROHME2016_test": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/crohme2023_white/crohme2023_CROHME2016_test.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "crohme2023_CROHME2023_val": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/crohme2023_white/crohme2023_CROHME2023_val.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "crohme2023_CROHME2023_test": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/crohme2023_white/crohme2023_CROHME2023_test.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "crohme2023_CROHME2019_test": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/crohme2023_white/crohme2023_CROHME2019_test.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "unimer_net_train": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/unimernet/unimer_net_train.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "unimer_net_cpe": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/unimernet/unimer_net_cpe.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "unimer_net_sce": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/unimernet/unimer_net_sce.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "unimer_net_hwe": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/unimernet/unimer_net_hwe.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "unimer_net_train_100k": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/unimernet/unimer_net_train_100k.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "unimer_net_spe": {
-    "file_name": "/data/liyu/llmHMER/hmer_dataset/unimernet/unimer_net_spe.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
   "loreal_train": {
     "file_name": "/home/user/workspaces/oulaya/split_dataset/train.json",
     "formatting": "sharegpt",
@@ -863,7 +695,7 @@
     }
   },
   "loreal_test": {
-    "file_name": "/home/user/workspaces/oulaya/split_dataset/test.json",
+    "file_name": "/home/user/workspaces/oulaya/split_dataset/train.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",
@@ -877,77 +709,7 @@
     }
   },
   "loreal_all": {
-    "file_name": "/home/user/workspaces/oulaya/data/6.5_multi_task_prompt_data.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "loreal_train_only_diagnosis": {
-    "file_name": "/home/user/workspaces/oulaya/split_dataset_one/train.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "loreal_test_only_diagnosis": {
-    "file_name": "/home/user/workspaces/oulaya/split_dataset_one/test.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "loreal_train_4image": {
-    "file_name": "/home/user/workspaces/oulaya/split_dataset_4image/train.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "loreal_test_4image": {
-    "file_name": "/home/user/workspaces/oulaya/split_dataset_4image/test.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
-  "loreal_all_4image": {
-    "file_name": "/home/user/workspaces/oulaya/data/6.5_multi_task_prompt_data_4image.json",
+    "file_name": "/home/user/workspaces/oulaya/data/6.prompt_data.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",
@@ -4177,6 +3939,20 @@
   },
   "unimernet_train_0410_final": {
     "file_name": "/home/user/workspaces/hmer_dataset/test/unimernet/unimernet_train_0410_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0420-hme100k_invalid_part": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0410final/0420-hme100k_invalid_part.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",

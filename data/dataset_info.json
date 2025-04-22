@@ -3965,20 +3965,6 @@
       "assistant_tag": "gpt"
     }
   },
-  "unimernet_train_0410_final": {
-    "file_name": "/home/user/workspaces/hmer_dataset/test/unimernet/unimernet_train_0410_final.json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "messages",
-      "images": "images"
-    },
-    "tag": {
-      "role_tag": "from",
-      "content_tag": "value",
-      "user_tag": "human",
-      "assistant_tag": "gpt"
-    }
-  },
   "0420-hme100k_invalid_part": {
     "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0410final/0420-hme100k_invalid_part.json",
     "formatting": "sharegpt",
@@ -3993,8 +3979,8 @@
       "assistant_tag": "gpt"
     }
   },
-  "unimer_net_cpe": {
-    "file_name": "/home/user/workspaces/hmer_dataset/test/unimernet/unimer_net_cpe.json",
+  "unimernet_train_0410_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/unimernet/unimernet_train_0410_final.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",
@@ -4007,8 +3993,8 @@
       "assistant_tag": "gpt"
     }
   },
-  "unimer_net_hwe": {
-    "file_name": "/home/user/workspaces/hmer_dataset/test/unimernet/unimer_net_hwe.json",
+  "unimer_net_cpe": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/unimernet/unimer_net_cpe.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",
@@ -4022,7 +4008,21 @@
     }
   },
   "unimer_net_sce": {
-    "file_name": "/home/user/workspaces/hmer_dataset/test/unimernet/unimer_net_sce.json",
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/unimernet/unimer_net_sce.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "unimer_net_hwe": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/unimernet/unimer_net_hwe.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",
@@ -4036,7 +4036,7 @@
     }
   },
   "unimer_net_spe": {
-    "file_name": "/home/user/workspaces/hmer_dataset/test/unimernet/unimer_net_spe.json",
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/test/unimernet/unimer_net_spe.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",

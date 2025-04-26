@@ -4887,5 +4887,18 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "jiuzhoutong-0426": {
+    "file_name": "/home/jiangjin/mydata/jiuzhoutong/4class-20250419/processed_train_data_4_class_20250425_1599_llamafac-format.jsonl",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

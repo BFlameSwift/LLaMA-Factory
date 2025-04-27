@@ -16,7 +16,7 @@ freeze_language_model: false  # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: crohme_train,crohme_train_0423_final_tree,crohme_train_0423_final_can,0320_single_error_fix,0320_multi_error_find,0417_crohme2023_multi_error_find
+dataset: crohme_train,crohme_train_0425_final_tree,crohme_train_0425_final_can,0320_single_error_fix,0320_multi_error_find,0417_crohme2023_multi_error_find
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 3000000

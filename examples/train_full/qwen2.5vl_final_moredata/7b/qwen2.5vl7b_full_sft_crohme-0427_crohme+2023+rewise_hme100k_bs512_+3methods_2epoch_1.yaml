@@ -10,33 +10,34 @@ stage: sft
 do_train: true
 finetuning_type: full
 freeze_vision_tower: false # choices: [true, false]
-freeze_multi_modal_projector: false # choices: [true, false]
-freeze_language_model: false # choices: [true, false]
+freeze_multi_modal_projector: false  # choices: [true, false]
+freeze_language_model: false  # choices: [true, false]
 # train_mm_proj_only: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: mathwriting_synthetic_0423_train_fold_1_of_3,crohme_train
+dataset: hme100k_train_0425_final,hme100k_train_0425_final_tree,hme100k_train_0425_final_can,0417_hme100k_single_error_fix_with_correction,0417_hme100k_multi_error_find,crohme_train,crohme_train_0425_final_tree,crohme_train_0425_final_can,0320_single_error_fix,0320_multi_error_find,0417_crohme2023_multi_error_find,0417_crohme2023_single_error_fix_with_correction,crohme2023_no_train_0425_final_can,crohme2023_no_train_0425_final_tree,crohme2023_no_train_0425_final
+
 template: qwen2_vl
 cutoff_len: 2048
-max_samples: 200000
+max_samples: 4000000
 overwrite_cache: true
 preprocessing_num_workers: 128
 dataloader_num_workers: 128
 
 ### output
-output_dir: saves/qwen2.5_vl-3b/full/sft/standred/split-0425/0425_bs512_math_synth_split_1_1epoch
+output_dir: saves/qwen2.5_vl-7b/full/sft/standred/041x-all-methods/0427_crohme+2023+rewise_hme100k_bs512_+3methods_2epoch_1
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
-save_steps: 9999 # 15个epoch
+save_steps: 100 # 15个epoch
 plot_loss: true
 overwrite_output_dir: true
 
 ### train
 per_device_train_batch_size: 4
-gradient_accumulation_steps: 64
+gradient_accumulation_steps: 32
 learning_rate: 1.0e-5
-num_train_epochs: 1.0
+num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
 bf16: true
@@ -45,9 +46,9 @@ save_only_model: true
 resume_from_checkpoint: null
 
 ### eval
-# eval_dataset: mathwriting_synthetic_val_fold_1_of_3
+# eval_dataset: crohme_2014,crohme_2016,crohme_2019
 # #  ,crohme_2016,crohme_2019
 # val_size: 0
 # per_device_eval_batch_size: 8
 # eval_strategy: steps
-# eval_steps: 9999
+# eval_steps: 1000

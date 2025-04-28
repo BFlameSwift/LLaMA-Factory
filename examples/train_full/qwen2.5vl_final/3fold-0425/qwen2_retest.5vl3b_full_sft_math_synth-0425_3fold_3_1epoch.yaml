@@ -19,7 +19,7 @@ deepspeed: examples/deepspeed/ds_z2_config.json
 dataset: mathwriting_synthetic_0423_train_fold_3_of_3,crohme_train
 template: qwen2_vl
 cutoff_len: 2048
-max_samples: 200000
+max_samples: 2000000
 overwrite_cache: true
 preprocessing_num_workers: 128
 dataloader_num_workers: 128

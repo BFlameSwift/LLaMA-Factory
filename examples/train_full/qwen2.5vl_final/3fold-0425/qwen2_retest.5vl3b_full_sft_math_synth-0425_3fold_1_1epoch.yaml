@@ -16,16 +16,16 @@ freeze_language_model: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: mathwriting_synthetic_0410_train_fold_1_of_3,crohme_train
+dataset: mathwriting_synthetic_0423_train_fold_1_of_3,crohme_train
 template: qwen2_vl
 cutoff_len: 2048
-max_samples: 200000
+max_samples: 2000000
 overwrite_cache: true
 preprocessing_num_workers: 128
 dataloader_num_workers: 128
 
 ### output
-output_dir: saves/qwen2.5_vl-3b/full/sft/standred/split-0410/0410_bs512_math_synth_split_1_1epoch
+output_dir: saves/qwen2.5_vl-3b/full/sft/standred/split-0425/0425_bs512_math_synth_split_1_1epoch
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
 save_steps: 9999 # 15个epoch
@@ -34,7 +34,7 @@ overwrite_output_dir: true
 
 ### train
 per_device_train_batch_size: 4
-gradient_accumulation_steps: 32
+gradient_accumulation_steps: 64
 learning_rate: 1.0e-5
 num_train_epochs: 1.0
 lr_scheduler_type: cosine

@@ -16,7 +16,7 @@ freeze_language_model: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: im2latex_v2_train_0423_train_fold_3_of_3
+dataset: im2latex_v2_train_0430_train_fold_3_of_3
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 200000

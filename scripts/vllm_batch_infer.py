@@ -63,7 +63,7 @@ def vllm_infer(
 
     Usage: python vllm_infer.py --model_name_or_path meta-llama/Llama-2-7b-hf --template llama --dataset alpaca_en_demo
     """
-    check_version("vllm>=0.4.3,<=0.7.3")
+    # check_version("vllm>=0.4.3,<=0.7.3")
     if pipeline_parallel_size > get_device_count():
         raise ValueError("Pipeline parallel size should be smaller than the number of gpus.")
     adapter_name_or_path = None
@@ -232,13 +232,13 @@ def vllm_infer(
                             sample["images"],
                             image_max_pixels=image_max_pixels,
                             image_min_pixels=image_min_pixels
-                        )
+                        )["images"]
                     }
                     batch_images.append(sample["images"])
                 else:
                     multi_modal_data = None
                     batch_images.append([])
-
+                # breakpoint()
                 # input_ids
                 input_ids = sample["input_ids"]
                 # prompt

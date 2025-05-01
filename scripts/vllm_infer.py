@@ -94,9 +94,7 @@ def vllm_infer(
                     sample["images"], image_max_pixels=image_max_pixels, image_min_pixels=image_min_pixels
                 )["images"]
             }
-<<<<<<< HEAD
             images.append(sample["images"])
-=======
         elif sample["videos"]:
             multi_modal_data = {
                 "video": template_obj.mm_plugin._regularize_videos(
@@ -109,7 +107,6 @@ def vllm_infer(
                 sampling_rate=16000,
             )
             multi_modal_data = {"audio": zip(audio_data["audios"], audio_data["sampling_rates"])}
->>>>>>> origin/main
         else:
             multi_modal_data = None
             images.append([])

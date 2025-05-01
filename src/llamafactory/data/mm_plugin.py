@@ -1555,7 +1555,7 @@ class Qwen2OmniPlugin(Qwen2VLPlugin):
             image_grid_thw = [None] * len(images)
             video_grid_thw = [None] * len(videos)
             audio_lengths = [None] * len(audios)
-
+        breakpoint()
         for message in messages:
             content = message["content"]
             while IMAGE_PLACEHOLDER in content:

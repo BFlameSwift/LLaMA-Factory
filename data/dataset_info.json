@@ -5134,5 +5134,131 @@
       "user_tag": "human",
       "assistant_tag": "gpt"
     }
+  },
+  "0430-im2latex100k_multi_error_find": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/error_data/0430-im2latex100k_multi_error_find.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0430-im2latex100k_single_error_fix_with_correction": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/error_data/0430-im2latex100k_single_error_fix_with_correction.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_synthetic_0502_reject_sampling_0425_final_tree": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/mathwriting_synthetic_0502_reject_sampling_0425_final_tree.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_synthetic_0502_reject_sampling_0425_final": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/mathwriting_synthetic_0502_reject_sampling_0425_final.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "mathwriting_synthetic_0502_reject_sampling_0425_final_can": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/can/mathwriting_synthetic_0502_reject_sampling_0425_final_can.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0502_mathwriting_synth_single_error_fix_with_correction_reject_sampling": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/error_data/0502_mathwriting_synth_single_error_fix_with_correction_reject_sampling.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0502_mathwriting_synth_multi_error_find": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/error_data/0502_mathwriting_synth_multi_error_find.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0502_mathwriting_synth_single_error_fix_with_correction": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/error_data/0502_mathwriting_synth_single_error_fix_with_correction.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "0502_mathwriting_synth_multi_error_find_reject_sampling": {
+    "file_name": "/home/liyu/workspaces/llmHMER/hmer_dataset/0425final/error_data/0502_mathwriting_synth_multi_error_find_reject_sampling.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tag": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
   }
 }

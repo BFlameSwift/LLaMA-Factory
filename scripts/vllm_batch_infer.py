@@ -154,27 +154,68 @@ def vllm_infer(
     #     """简单的分批切片迭代器。"""
     #     for i in range(0, len(data_list), batch_size):
     #         yield data_list[i : i + batch_size]
-    def batch_iterator(dataset_iter, batch_size):
-        print("is streaming:", use_streaming)
-        if use_streaming:
+    # def batch_iterator(dataset_iter, batch_size):
+    #     print("is streaming:", use_streaming)
+    #     if use_streaming:
             
-            # streaming 模式下，dataset_iter 是个可迭代对象
-            batch = []
-            for item in dataset_iter:
-                batch.append(item)
-                if len(batch) == batch_size:
-                    yield batch
-                    batch = []
-            if batch:
+    #         # streaming 模式下，dataset_iter 是个可迭代对象
+    #         batch = []
+    #         for item in dataset_iter:
+    #             batch.append(item)
+    #             if len(batch) == batch_size:
+    #                 yield batch
+    #                 batch = []
+    #         if batch:
+    #             yield batch
+    #     else:
+    #         # 非 streaming, dataset_iter 是个 Dataset 对象，可以获取长度
+    #         length = len(dataset_iter)
+    #         for start_idx in range(0, length, batch_size):
+    #             end_idx = min(start_idx + batch_size, length)
+    #             # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
+    #             sub_dataset = dataset_iter.select(range(start_idx, end_idx))
+    #             yield sub_dataset
+    def batch_iterator(ds, batch_size: int, skip_n: int = 0, stop_at: int = int(1e9)):
+        """
+        Yield list[dict] (streaming) or datasets.Dataset (map-style) in batches.
+
+        - ``ds`` 可能是 IterableDataset 或 datasets.Dataset
+        - ``skip_n``   : 跳过前 N 条
+        - ``stop_at``  : 只取到第 stop_at 条为止（含）
+        """
+        # ① 先把流式和非流式统一成“逐条 item” 的生成器
+        if hasattr(ds, "__iter__") and not hasattr(ds, "__len__"):   # IterableDataset
+            item_iter = iter(ds)
+        else:                                                        # map-style Dataset
+            # 用下标生成器可避免一次性切片巨大列表
+            def _gen():
+                for i in range(len(ds)):
+                    yield ds[i]
+            item_iter = _gen()
+
+        # ② 跳过 skip_n
+        for _ in range(skip_n):
+            try:
+                next(item_iter)
+            except StopIteration:
+                return  # 数据不到 skip_n 行，直接结束
+
+        # ③ 批量收集并产出
+        pulled = 0          # 已取出的样本
+        batch = []
+        for item in item_iter:
+            batch.append(item)
+            pulled += 1
+            # 达到 batch_size 就产出
+            if len(batch) == batch_size:
                 yield batch
-        else:
-            # 非 streaming, dataset_iter 是个 Dataset 对象，可以获取长度
-            length = len(dataset_iter)
-            for start_idx in range(0, length, batch_size):
-                end_idx = min(start_idx + batch_size, length)
-                # 这会返回一个 dataset 对象，只含下标 [start_idx, end_idx) 的那些行
-                sub_dataset = dataset_iter.select(range(start_idx, end_idx))
-                yield sub_dataset
+                batch = []
+            # 已达到 stop_at 就结束
+            if pulled >= (stop_at - skip_n):
+                break
+        # 剩余不足 batch_size 的尾批
+        if batch:
+            yield batch
                 
     # def batch_iterator(ds, batch_size):
     #     length = len(ds)
@@ -189,7 +230,8 @@ def vllm_infer(
     print(type(dataset_module["train_dataset"]))
     if use_streaming:
         print("streaming dataset")
-        total_samples = 74759
+        # total_samples = 74759
+        total_samples = 116795
     else:
         total_samples = len(dataset_module["train_dataset"])
     print(f"Total dataset size: {total_samples}")

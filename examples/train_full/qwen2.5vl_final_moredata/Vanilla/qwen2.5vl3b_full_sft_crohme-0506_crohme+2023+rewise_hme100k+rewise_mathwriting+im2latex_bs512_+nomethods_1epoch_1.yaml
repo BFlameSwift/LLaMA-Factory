@@ -1,5 +1,5 @@
 ### model
-model_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
+model_name_or_path: Qwen/Qwen2.5-VL-3B-Instruct
 
 image_max_pixels: 262144
 video_max_pixels: 16384
@@ -13,10 +13,10 @@ freeze_vision_tower: false # choices: [true, false]
 freeze_multi_modal_projector: false # choices: [true, false]
 freeze_language_model: false # choices: [true, false]
 # train_mm_proj_only: false # choices: [true, false]
-deepspeed: examples/deepspeed/ds_z2_config.json
+deepspeed: examples/deepspeed/ds_z0_config.json
 
 ### dataset
-dataset: hme100k_train_0425_final,crohme_train,crohme2023_no_train_0425_final,mathwriting_symbols_0425_final,mathwriting_train_0425_final,mathwriting_synthetic_0502_reject_sampling_0425_final
+dataset: hme100k_train_0425_final,crohme_train,crohme2023_no_train_0425_final,mathwriting_symbols_0425_final,mathwriting_train_0425_final,im2latex_v2_train_0425_final
 
 template: qwen2_vl
 cutoff_len: 2048
@@ -26,7 +26,7 @@ preprocessing_num_workers: 128
 dataloader_num_workers: 128
 
 ### output
-output_dir: saves/qwen2.5_vl-7b/full/sft/standred/41x-all-methods/0502_crohme+2023+rewise_hme100k+rewise_mathwriting+rs_sytn_bs512_+nomethods_1epoch_1
+output_dir: saves/qwen2.5_vl-3b/full/sft/standred/050x-vanilla/0506_crohme+2023+rewise_hme100k+rewise_mathwriting+im2latex_bs512_+nomethods_1epoch_1
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
 save_steps: 200 # 15个epoch
@@ -35,7 +35,7 @@ overwrite_output_dir: true
 
 ### train
 per_device_train_batch_size: 4
-gradient_accumulation_steps: 32
+gradient_accumulation_steps: 64
 learning_rate: 1.0e-5
 num_train_epochs: 1.0
 lr_scheduler_type: cosine

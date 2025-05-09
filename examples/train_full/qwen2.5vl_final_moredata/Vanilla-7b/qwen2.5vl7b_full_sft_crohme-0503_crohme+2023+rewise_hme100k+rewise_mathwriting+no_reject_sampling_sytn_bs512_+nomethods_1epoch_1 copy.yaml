@@ -26,7 +26,7 @@ preprocessing_num_workers: 128
 dataloader_num_workers: 128
 
 ### output
-output_dir: saves/qwen2.5_vl-3b/full/sft/standred/041x-all-methods/0502_crohme+2023+rewise_hme100k+rewise_mathwriting+no_rs_sytn_bs512_+nomethods_1epoch_1
+output_dir: saves/qwen2.5_vl-7b/full/sft/standred/41x-all-methods/0502_crohme+2023+rewise_hme100k+rewise_mathwriting+no_rs_sytn_bs512_+nomethods_1epoch_1
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
 save_steps: 200 # 15个epoch

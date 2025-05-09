@@ -16,7 +16,7 @@ freeze_language_model: false # choices: [true, false]
 deepspeed: examples/deepspeed/ds_z2_config.json
 
 ### dataset
-dataset: hme100k_train_0425_final,crohme_train,crohme2023_no_train_0425_final,mathwriting_symbols_0425_final,mathwriting_train_0425_final,mathwriting_synthetic_0502_reject_sampling_0425_final
+dataset: hme100k_train_0425_final,hme100k_train_0425_final_tree,hme100k_train_0425_final_can,0417_hme100k_single_error_fix_with_correction,0417_hme100k_multi_error_find,crohme_train,crohme_train_0425_final_tree,crohme_train_0425_final_can,0320_single_error_fix,0320_multi_error_find,0417_crohme2023_multi_error_find,0417_crohme2023_single_error_fix_with_correction,crohme2023_no_train_0425_final_can,crohme2023_no_train_0425_final_tree,crohme2023_no_train_0425_final,0425_mathwriting_train_multi_error_find,0425_mathwriting_train_single_error_fix_with_correction,mathwriting_symbols_0425_final,mathwriting_train_0425_final,mathwriting_train_0425_final_tree,mathwriting_train_0425_final_can,im2latex_v2_train_0425_final,im2latex_v2_train_0425_final_tree,im2latex_v2_train_0425_final_can,0430-im2latex100k_multi_error_find,0430-im2latex100k_single_error_fix_with_correction
 
 template: qwen2_vl
 cutoff_len: 2048
@@ -26,7 +26,7 @@ preprocessing_num_workers: 128
 dataloader_num_workers: 128
 
 ### output
-output_dir: saves/qwen2.5_vl-7b/full/sft/standred/41x-all-methods/0502_crohme+2023+rewise_hme100k+rewise_mathwriting+rs_sytn_bs512_+nomethods_1epoch_1
+output_dir: saves/qwen2.5_vl-7b/full/sft/standred/05x-all-methods/0508_crohme+2023+rewise_hme100k+rewise_mathwriting+im2latex_bs512_+3methods_1epoch_1
 # output_dir: saves/qwen2_vl-2b/full/sft/standred/0102_full_crohme_white
 logging_steps: 1
 save_steps: 200 # 15个epoch
